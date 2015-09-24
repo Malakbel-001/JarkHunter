@@ -21,8 +21,7 @@ public class Game extends Canvas implements Runnable {
 		
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
 				
-		handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
-		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy));
+		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler));
 	}
 	
 	public synchronized void start(){
@@ -90,6 +89,16 @@ public class Game extends Canvas implements Runnable {
 		
 		g.dispose();
 		bs.show();
+	}
+	
+	public static int clamp(int var, int min, int max){
+		if(var >= max){
+			return var = max;
+		} else if(var <= min){
+			return var = min;
+		} else {
+			return var;
+		}
 	}
 	
 	public static void main(String[] args) {
