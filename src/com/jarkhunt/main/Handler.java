@@ -3,6 +3,8 @@ package com.jarkhunt.main;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
+import Model.GameObject;
+
 public class Handler {
 	
 	LinkedList<GameObject> object = new LinkedList<GameObject>();

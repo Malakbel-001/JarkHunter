@@ -1,9 +1,11 @@
-package com.jarkhunt.main;
+package View;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+
+import controller.Game;
 
 public class Window extends Canvas {
 

@@ -1,8 +1,13 @@
-package com.jarkhunt.main;
+package Model;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import com.jarkhunt.main.Handler;
+import com.jarkhunt.main.ID;
+
+import controller.Game;
 
 public class BasicEnemy extends GameObject {
 
