@@ -36,7 +36,8 @@ public class BasicEnemy extends GameObject {
 			velX *= -1;
 		}
 		
-		handler.addObject(new Trail(x, y, ID.Trail, Color.red, width, height, 0.03f, handler));
+//		handler.addObject(new Trail(x, y, ID.Trail, Color.red, width, height, 0.03f, handler));
+		handler.addObject(new Trail(x, y, ID.Trail, Color.orange, (int) (width * 0.5), (int) (height * 0.5), 0.03f, handler));
 	}
 
 	public void render(Graphics g) {
