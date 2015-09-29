@@ -32,5 +32,10 @@ public class Handler {
 	public void removeObject(GameObject object){
 		this.object.remove(object);
 	}
+
+	public void clicked(final int x, final int y) {
+		System.out.println(x);
+		System.out.println(y);
+	}
 	
 }

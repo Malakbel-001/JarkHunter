@@ -3,6 +3,7 @@ package controller;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 
 import model.BasicEnemy;
@@ -107,6 +108,10 @@ public class Game extends Canvas implements Runnable {
 	
 	public static void main(String[] args) {
 		new Game();
+	}
+
+	public void clicked(MouseEvent arg0) {
+		handler.clicked(arg0.getX(), arg0.getY());
 	}
 
 }
