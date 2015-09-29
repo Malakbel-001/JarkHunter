@@ -20,13 +20,17 @@ public class Handler {
 	public void render(Graphics g){
 		for(int i = 0; i < object.size(); i++){
 			GameObject tempObject = object.get(i);
-			
+			//enemyobject
 			tempObject.render(g);
 		}
 	}
 	
 	public void addObject(GameObject object){
 		this.object.add(object);
+	}
+	
+	public void addObjectFirst(GameObject object){
+		this.object.addFirst(object);
 	}
 	
 	public void removeObject(GameObject object){
