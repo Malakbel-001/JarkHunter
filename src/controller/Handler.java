@@ -1,13 +1,18 @@
 package controller;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.LinkedList;
 
 import model.GameObject;
 
 public class Handler {
 	
-	LinkedList<GameObject> object = new LinkedList<GameObject>();
+	private LinkedList<GameObject> object = new LinkedList<GameObject>();
+	private Game game;
+	
+	public Handler(final Game game){
+		this.game = game;
+	}
 	
 	public void tick(){
 		GameObject tempObject = null;
@@ -17,11 +22,11 @@ public class Handler {
 		}
 	}
 	
-	public void render(Graphics g){
+	public void render(Graphics2D g2d){
 		for(int i = 0; i < object.size(); i++){
 			GameObject tempObject = object.get(i);
 			
-			tempObject.render(g);
+			tempObject.render(g2d, game);
 		}
 	}
 	

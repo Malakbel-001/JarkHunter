@@ -1,8 +1,12 @@
 package model;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
+import java.awt.image.ImageObserver;
+
+import javax.swing.ImageIcon;
 
 import controller.Game;
 import controller.Handler;
@@ -13,6 +17,7 @@ public class BasicEnemy extends GameObject {
 	
 	public BasicEnemy(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
+		this.img = new ImageIcon(this.getClass().getResource("../images/chaser.png")).getImage();
 		
 		velX = 3;
 		velY = 3;
@@ -43,9 +48,14 @@ public class BasicEnemy extends GameObject {
 		handler.addObject(new Trail(x, y, ID.Trail, Color.orange, (int) (width * 0.5), (int) (height * 0.5), 0.03f, handler));
 	}
 
-	public void render(Graphics g) {
-		g.setColor(Color.red);
-		g.fillRect(x, y, width, height);
+	public void render(Graphics2D g2d, ImageObserver o) {
+//		g.setColor(Color.red);
+//		g.fillRect(x, y, width, height);
+		
+		AffineTransform originalTransform = g2d.getTransform();
+		g2d.rotate(90, x, y);
+		g2d.drawImage(img, x, y, o);
+		g2d.setTransform(originalTransform);
 	}
 	
 }

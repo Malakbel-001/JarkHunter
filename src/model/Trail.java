@@ -2,9 +2,9 @@ package model;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
 
 import controller.Handler;
 
@@ -34,12 +34,11 @@ public class Trail extends GameObject {
 		}
 	}
 	
-	public void render(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
+	public void render(Graphics2D g2d, ImageObserver o) {
 		g2d.setComposite(makeTransparent(alpha));
 		
 		g2d.setColor(color);
-		g.fillRect(x, y, width, height);
+		g2d.fillRect(x, y, width, height);
 		
 		g2d.setComposite(makeTransparent(1));
 	}
@@ -53,6 +52,4 @@ public class Trail extends GameObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 }
