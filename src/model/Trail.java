@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -6,8 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import com.jarkhunt.main.Handler;
-import com.jarkhunt.main.ID;
+import controller.Handler;
 
 public class Trail extends GameObject {
 	

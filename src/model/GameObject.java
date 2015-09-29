@@ -1,9 +1,7 @@
-package Model;
+package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
-import com.jarkhunt.main.ID;
 
 public abstract class GameObject {
 	

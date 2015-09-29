@@ -1,9 +1,9 @@
-package com.jarkhunt.main;
+package controller;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
 
-import Model.GameObject;
+import model.GameObject;
 
 public class Handler {
 	

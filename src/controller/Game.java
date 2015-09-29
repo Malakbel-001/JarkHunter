@@ -5,12 +5,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import com.jarkhunt.main.Handler;
-import com.jarkhunt.main.ID;
-import com.jarkhunt.main.KeyInput;
-
-import Model.BasicEnemy;
-import View.Window;
+import model.BasicEnemy;
+import model.ID;
+import view.Window;
 
 public class Game extends Canvas implements Runnable {
 	
@@ -27,7 +24,7 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
-				
+		
 		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler));
 	}
 	

@@ -1,4 +1,4 @@
-package com.jarkhunt.main;
+package model;
 
 public enum ID {
 	
