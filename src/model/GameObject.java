@@ -23,6 +23,14 @@ public abstract class GameObject {
 	public abstract void render(Graphics2D g2d, ImageObserver o);
 	public abstract Rectangle getBounds();
 	
+	protected double getCenterObjectX(int x){
+		return x+width*0.5;
+	}
+	
+	protected double getCenterObjectY(int y){
+		return y+height*0.5;
+	}
+	
 	public void setX(int x){
 		this.x = x;
 	}
