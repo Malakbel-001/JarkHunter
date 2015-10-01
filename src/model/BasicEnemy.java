@@ -26,8 +26,8 @@ public class BasicEnemy extends GameObject {
 		velX = 3;
 		velY = 3;
 		
-		width = 48;
-		height = 48;
+		width = img.getWidth(null);
+		height = img.getHeight(null);
 		
 		this.handler = handler;
 	}
@@ -110,8 +110,9 @@ public class BasicEnemy extends GameObject {
 	}
 	
 	public void render(Graphics2D g2d, ImageObserver o) {
-//		g.setColor(Color.red);
+		g2d.setColor(Color.red);
 //		g.fillRect(x, y, width, height);
+		g2d.drawRect(x, y, width, height);
 		
 //		double radians = Math.atan2(velY, velX) + constant number to fix rotation;
 		

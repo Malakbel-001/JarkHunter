@@ -110,9 +110,4 @@ public class Game extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		new Game();
 	}
-
-	public void clicked(MouseEvent arg0) {
-		handler.clicked(arg0.getX(), arg0.getY());
-	}
-
 }
