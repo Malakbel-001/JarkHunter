@@ -14,7 +14,7 @@ public class MouseInput extends MouseAdapter {
 		this.handler = handler;
 	}
 	
-	public void mousePressed(MouseEvent e){
+	public void mousePressed(MouseEvent e){ //Use Pressed not Clicked! Clicked doesn't work when moving while clicking...
 //		e.getX();
 //		e.getY();
 		
@@ -26,15 +26,8 @@ public class MouseInput extends MouseAdapter {
 			tempObject = handler.getObjectList().get(i);
 			
 			if(tempObject.getId() == ID.BasicEnemy){
-				System.out.println("x Enemy: "+tempObject.getX());
-				System.out.println("y Enemy: "+tempObject.getY());
-				System.out.println("x Point: "+e.getX());
-				System.out.println("y Point: "+e.getY());
-				System.out.println("RectangleBool: "+tempObject.getBounds().contains(e.getPoint()));
-				System.out.println("RectangleX: "+tempObject.getBounds().getMaxX());
-				System.out.println("RectangleY: "+tempObject.getBounds().getMaxY());
 				if(tempObject.getBounds().contains(e.getPoint())){
-					System.out.println("Touched: "+tempObject.getId());
+					handler.removeObject(tempObject);
 				}
 			}
 			
