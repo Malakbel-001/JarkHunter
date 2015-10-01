@@ -30,10 +30,10 @@ public class Game extends Canvas implements Runnable {
 		
 		random = new Random();
 		
-		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler)); //spawn in the middle of the screen
-//		for(int i = 0; i < 5; i++){
-//			handler.addObject(new BasicEnemy(random.nextInt(WIDTH-BasicEnemy.getWidth()), random.nextInt(HEIGHT-BasicEnemy.getHeight()), ID.BasicEnemy, handler));
-//		}
+//		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler)); //spawn in the middle of the screen
+		for(int i = 0; i < 5; i++){
+			handler.addObject(new BasicEnemy(random, ID.BasicEnemy, handler));
+		}
 	}
 	
 	public synchronized void start(){

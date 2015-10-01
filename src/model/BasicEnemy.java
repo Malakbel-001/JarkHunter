@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.image.ImageObserver;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -21,10 +22,25 @@ public class BasicEnemy extends GameObject {
 	
 	public BasicEnemy(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
+		initialize(handler);
+	}
+	
+	public BasicEnemy(Random random, ID id, Handler handler) {
+		super(0, 0, id);
+		initialize(handler);
+		initializeRandomSpawn(random);
+	}
+	
+	private void initializeRandomSpawn(Random random) {
+		x = random.nextInt(Game.WIDTH - width);
+		y = random.nextInt((int) (Game.HEIGHT - (height*1.5)));
+	}
+	
+	private void initialize(Handler handler) {
 		this.img = new ImageIcon(this.getClass().getResource("../images/chaser.png")).getImage();
 		
-		velX = 1;
-		velY = 1;
+		velX = 3;
+		velY = 3;
 		
 		width = img.getWidth(null);
 		height = img.getHeight(null);
@@ -32,7 +48,7 @@ public class BasicEnemy extends GameObject {
 		this.handler = handler;
 	}
 	
-	public Rectangle getBounds(){
+	public Rectangle getBounds()  {
 		return new Rectangle(x, y, width, height);
 	}
 
