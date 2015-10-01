@@ -26,11 +26,9 @@ public abstract class GameObject {
 	protected double getCenterObjectX(int x){
 		return x+width*0.5;
 	}
-	
 	protected double getCenterObjectY(int y){
 		return y+height*0.5;
 	}
-	
 	public void setX(int x){
 		this.x = x;
 	}
@@ -61,4 +59,10 @@ public abstract class GameObject {
 	public int getVelY(){
 		return velY;
 	}
+//	public static int getWidth(){
+//		return width;
+//	}
+//	public static int getHeight(){
+//		return height;
+//	}
 }

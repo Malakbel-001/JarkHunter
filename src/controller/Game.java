@@ -3,8 +3,8 @@ package controller;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import model.BasicEnemy;
 import model.ID;
@@ -18,6 +18,7 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean running = false;
 	
+	private Random random;
 	private Handler handler;
 	
 	public Game(){
@@ -25,9 +26,14 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(new MouseInput(handler));
 		
-		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
+		new Window(WIDTH, HEIGHT, "JarkHunt", this);
 		
-		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler));
+		random = new Random();
+		
+		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler)); //spawn in the middle of the screen
+//		for(int i = 0; i < 5; i++){
+//			handler.addObject(new BasicEnemy(random.nextInt(WIDTH-BasicEnemy.getWidth()), random.nextInt(HEIGHT-BasicEnemy.getHeight()), ID.BasicEnemy, handler));
+//		}
 	}
 	
 	public synchronized void start(){
