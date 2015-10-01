@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
-import java.awt.image.ImageObserver;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -85,7 +84,7 @@ public class BasicEnemy extends GameObject {
 //		handler.addObject(new Trail((int) calculateWavePattern2X(), (int) calculateWavePattern2Y(), ID.Trail, Color.orange, (int) (width * 0.1), (int) (height * 0.1), 0.03f, handler));
 	}
 	
-	public void render(Graphics2D g2d, ImageObserver o) {
+	public void render(Graphics2D g2d) {
 		g2d.setColor(Color.red);
 //		g.fillRect(x, y, width, height);
 		g2d.drawRect(x, y, width, height);
@@ -102,7 +101,7 @@ public class BasicEnemy extends GameObject {
 		g2d.rotate(radians, getCenterObjectX(x), getCenterObjectY(y)); //make sure to give the center point of the image!!!
 		
 		//draw the image, while being rotated
-		g2d.drawImage(img, x, y, o);
+		g2d.drawImage(img, x, y, null);
 		
 		//revert transform / rotation on graphics, so OTHER GAMEOBJECTS that get RENDERED, do NOT get rotated!
 		g2d.setTransform(originalTransform);

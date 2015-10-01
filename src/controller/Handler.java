@@ -8,11 +8,6 @@ import model.GameObject;
 public class Handler {
 	
 	private LinkedList<GameObject> object = new LinkedList<GameObject>();
-	private Game game;
-	
-	public Handler(final Game game){
-		this.game = game;
-	}
 	
 	public void tick(){
 		GameObject tempObject = null;
@@ -26,7 +21,7 @@ public class Handler {
 		for(int i = 0; i < object.size(); i++){
 			GameObject tempObject = object.get(i);
 			
-			tempObject.render(g2d, game);
+			tempObject.render(g2d);
 		}
 	}
 	

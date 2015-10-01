@@ -3,7 +3,6 @@ package model;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 
 public abstract class GameObject {
 	
@@ -20,7 +19,7 @@ public abstract class GameObject {
 	}
 	
 	public abstract void tick();
-	public abstract void render(Graphics2D g2d, ImageObserver o);
+	public abstract void render(Graphics2D g2d);
 	public abstract Rectangle getBounds();
 	
 	protected double getCenterObjectX(int x){
