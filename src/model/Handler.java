@@ -1,9 +1,7 @@
-package controller;
+package model;
 
 import java.awt.Graphics2D;
 import java.util.LinkedList;
-
-import model.GameObject;
 
 public class Handler {
 	

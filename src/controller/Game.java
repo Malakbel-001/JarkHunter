@@ -7,6 +7,8 @@ import java.awt.image.BufferStrategy;
 import java.util.Random;
 
 import model.BasicEnemy;
+import model.HUD;
+import model.Handler;
 import model.ID;
 import view.Window;
 
@@ -20,9 +22,11 @@ public class Game extends Canvas implements Runnable {
 	
 	private Random random;
 	private Handler handler;
+	private HUD hud;
 	
 	public Game(){
 		handler = new Handler();
+		hud = new HUD();
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(new MouseInput(handler));
 		
@@ -53,6 +57,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void run(){
+		this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -98,6 +103,8 @@ public class Game extends Canvas implements Runnable {
 		g2d.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		handler.render(g2d);
+		
+		hud.render(g2d);
 		
 		g2d.dispose();
 		bs.show();

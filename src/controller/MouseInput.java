@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import model.GameObject;
+import model.Handler;
 import model.ID;
 
 public class MouseInput extends MouseAdapter {

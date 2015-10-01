@@ -9,7 +9,6 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 import controller.Game;
-import controller.Handler;
 
 public class BasicEnemy extends GameObject {
 
@@ -50,7 +49,7 @@ public class BasicEnemy extends GameObject {
 	public Rectangle getBounds()  {
 		return new Rectangle(x, y, width, height);
 	}
-
+	
 	public void tick() {
 		x += velX;
 		y += velY;
