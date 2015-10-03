@@ -4,12 +4,8 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
-
-import controller.Handler;
 
 public class Trail extends GameObject {
-	
 	private float alpha = 1;
 	private float life;
 	
@@ -34,7 +30,7 @@ public class Trail extends GameObject {
 		}
 	}
 	
-	public void render(Graphics2D g2d, ImageObserver o) {
+	public void render(Graphics2D g2d) {
 		g2d.setComposite(makeTransparent(alpha));
 		
 		g2d.setColor(color);

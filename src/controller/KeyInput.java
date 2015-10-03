@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import model.Handler;
+
 public class KeyInput extends KeyAdapter {
 	
 	private Handler handler;

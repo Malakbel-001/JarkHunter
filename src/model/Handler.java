@@ -1,18 +1,11 @@
-package controller;
+package model;
 
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 
-import model.GameObject;
-
 public class Handler {
 	
 	private LinkedList<GameObject> object = new LinkedList<GameObject>();
-	private Game game;
-	
-	public Handler(final Game game){
-		this.game = game;
-	}
 	
 	public void tick(){
 		GameObject tempObject = null;
@@ -26,7 +19,7 @@ public class Handler {
 		for(int i = 0; i < object.size(); i++){
 			GameObject tempObject = object.get(i);
 			
-			tempObject.render(g2d, game);
+			tempObject.render(g2d);
 		}
 	}
 	
@@ -37,10 +30,8 @@ public class Handler {
 	public void removeObject(GameObject object){
 		this.object.remove(object);
 	}
-
-	public void clicked(final int x, final int y) {
-		System.out.println(x);
-		System.out.println(y);
-	}
 	
+	public LinkedList<GameObject> getObjectList(){
+		return object;
+	}
 }

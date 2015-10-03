@@ -3,10 +3,12 @@ package controller;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import model.BasicEnemy;
+import model.HUD;
+import model.Handler;
 import model.ID;
 import view.Window;
 
@@ -18,16 +20,24 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean running = false;
 	
+	private Random random;
 	private Handler handler;
+	private HUD hud;
 	
 	public Game(){
-		handler = new Handler(this);
+		handler = new Handler();
+		hud = new HUD();
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(new MouseInput(handler));
 		
-		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
+		new Window(WIDTH, HEIGHT, "JarkHunt", this);
 		
-		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler));
+		random = new Random();
+		
+//		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler)); //spawn in the middle of the screen
+		for(int i = 0; i < 5; i++){
+			handler.addObject(new BasicEnemy(random, ID.BasicEnemy, handler));
+		}
 	}
 	
 	public synchronized void start(){
@@ -47,6 +57,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void run(){
+		this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -93,6 +104,8 @@ public class Game extends Canvas implements Runnable {
 		
 		handler.render(g2d);
 		
+		hud.render(g2d);
+		
 		g2d.dispose();
 		bs.show();
 	}
@@ -110,9 +123,4 @@ public class Game extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		new Game();
 	}
-
-	public void clicked(MouseEvent arg0) {
-		handler.clicked(arg0.getX(), arg0.getY());
-	}
-
 }
