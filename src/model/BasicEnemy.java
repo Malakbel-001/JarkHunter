@@ -76,7 +76,7 @@ public class BasicEnemy extends GameObject {
 //		handler.addObject(new Trail(x, y, ID.Trail, Color.red, width, height, 0.03f, handler));
 		
 		//best I could manage for now
-		handler.addObject(new Trail((int) calculatePlacementTrailX(), (int) calculatePlacementTrailY(), ID.Trail, Color.orange, (int) (width * 0.25), (int) (height * 0.25), 0.03f, handler));
+		handler.addObject(new Trail((int) calculatePlacementTrailX(), (int) calculatePlacementTrailY(), ID.Trail, Color.white, (int) (width * 0.25), (int) (height * 0.25), 0.03f, handler));
 		
 		//cool result, very interesting. Not yet working as intended, but still =P
 //		handler.addObject(new Trail((int) calculateWavePattern1X(), (int) calculateWavePattern1Y(), ID.Trail, Color.orange, (int) (width * 0.1), (int) (height * 0.1), 0.03f, handler));
