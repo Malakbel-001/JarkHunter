@@ -8,6 +8,8 @@ import java.awt.Graphics2D;
  * Heads-Up-Display
  */
 public class HUD {
+	public static int SCORE;
+	
 	public void tick(){
 		
 	}
