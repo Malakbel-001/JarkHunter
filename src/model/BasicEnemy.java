@@ -127,7 +127,6 @@ public class BasicEnemy extends GameObject {
 	protected double calculatePlacementTrailY(){
 		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
 		return ((height*0.5)-20)*Math.cos(Math.toDegrees(radians)) + getCenterObjectX(y);
-//		return ((height*0.5))*Math.sin(Math.toRadians(angle)) + getCenterObjectX(y);
 	}
 	
 	protected double calculateWavePattern1X(){

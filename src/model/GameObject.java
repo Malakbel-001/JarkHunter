@@ -4,6 +4,13 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 
+import behaviours.CollidableBehaviour;
+import behaviours.DrawBehaviour;
+import behaviours.MoveBehaviour;
+import container.CollidableContainer;
+import container.DrawContainer;
+import container.MoveContainer;
+
 public abstract class GameObject {
 	
 	protected int x, y; // can only be used by stuff that extends GameObject
@@ -11,6 +18,14 @@ public abstract class GameObject {
 	protected int velX, velY;
 	protected int width, height;
 	protected Image img;
+	
+	protected CollidableBehaviour collidableBehaviour;
+	protected DrawBehaviour drawBehaviour;
+	protected MoveBehaviour moveBehaviour;
+	
+	protected CollidableContainer collidableContainer;
+	protected DrawContainer drawContainer;
+	protected MoveContainer moveContainer;
 	
 	public GameObject(int x, int y, ID id){
 		this.x = x;
@@ -58,10 +73,4 @@ public abstract class GameObject {
 	public int getVelY(){
 		return velY;
 	}
-//	public static int getWidth(){
-//		return width;
-//	}
-//	public static int getHeight(){
-//		return height;
-//	}
 }

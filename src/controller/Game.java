@@ -69,7 +69,7 @@ public class Game extends Canvas implements Runnable {
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			while(delta >= 1){
-				tick();
+				tick(delta);
 				delta--;
 			}
 			if(running){
@@ -86,8 +86,8 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
 	
-	private void tick(){
-		handler.tick();
+	private void tick(double delta){
+		handler.tick(delta);
 	}
 	
 	private void render(){
