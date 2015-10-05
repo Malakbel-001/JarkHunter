@@ -76,19 +76,16 @@ public class BasicEnemy extends GameObject {
 //		handler.addObject(new Trail(x, y, ID.Trail, Color.red, width, height, 0.03f, handler));
 		
 		//best I could manage for now
-		handler.addObject(new Trail((int) calculatePlacementTrailX(), (int) calculatePlacementTrailY(), ID.Trail, Color.white, (int) (width * 0.25), (int) (height * 0.25), 0.03f, handler));
+//		handler.addObject(new Trail((int) calculatePlacementTrailX(), (int) calculatePlacementTrailY(), ID.Trail, Color.white, (int) (width * 0.25), (int) (height * 0.25), 0.03f, handler));
 		
 		//cool result, very interesting. Not yet working as intended, but still =P
-//		handler.addObject(new Trail((int) calculateWavePattern1X(), (int) calculateWavePattern1Y(), ID.Trail, Color.orange, (int) (width * 0.1), (int) (height * 0.1), 0.03f, handler));
+		handler.addObject(new Trail((int) calculateWavePattern1X(), (int) calculateWavePattern1Y(), ID.Trail, Color.white, (int) (width * 0.1), (int) (height * 0.1), 0.03f, handler));
 //		handler.addObject(new Trail((int) calculateWavePattern2X(), (int) calculateWavePattern2Y(), ID.Trail, Color.orange, (int) (width * 0.1), (int) (height * 0.1), 0.03f, handler));
 	}
 	
 	public void render(Graphics2D g2d) {
 		g2d.setColor(Color.red);
-//		g.fillRect(x, y, width, height);
 		g2d.drawRect(x, y, width, height);
-		
-//		double radians = Math.atan2(velY, velX) + constant number to fix rotation;
 		
 		//get rotation angle depending on velocity
 		double radians = Math.atan2(velY, velX) + Math.toRadians(90);
@@ -119,14 +116,14 @@ public class BasicEnemy extends GameObject {
 	 */
 	protected double calculatePlacementTrailX(){
 		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
-//		return (width*0.5)*Math.sin(Math.toDegrees(radians)) + getCenterObjectX(x);
-		return ((width*0.5)-20)*Math.cos(radians) + getCenterObjectX(x);
-//		return ((width*0.5))*Math.cos(Math.toRadians(angle)) + getCenterObjectX(x);
+//		double radians = Math.atan2(velY, velX); //rotation depending on graphics formula
+		return ((width*0.5)-20)*Math.cos(radians) + getCenterObjectX(x); //still no correct positioning but close enough
 	}
 	
 	protected double calculatePlacementTrailY(){
 		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
-		return ((height*0.5)-20)*Math.cos(Math.toDegrees(radians)) + getCenterObjectX(y);
+//		double radians = Math.atan2(velY, velX); //rotation depending on graphics formula
+		return ((height*0.5)-20)*Math.sin(radians) + getCenterObjectX(y); //still no correct positioning but close enough
 	}
 	
 	protected double calculateWavePattern1X(){
