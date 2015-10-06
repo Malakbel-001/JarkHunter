@@ -3,25 +3,29 @@ package model;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 
+import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
 
 public class Handler {
 	
 	private LinkedList<GameObject> objects = new LinkedList<GameObject>();
-	private MoveContainer moveContainer = new MoveContainer();
 	private DrawContainer drawContainer = new DrawContainer();
+	private MoveContainer moveContainer = new MoveContainer();
+	private CollidableContainer collidableContainer = new CollidableContainer();
+	
+	public Handler(){
+		DrawContainer drawContainer = new DrawContainer();
+		MoveContainer moveContainer = new MoveContainer();
+		CollidableContainer collidableContainer = new CollidableContainer();
+	}
 	
 	public void tick(double delta){
-		GameObject tempObject = null;
-		
-		for(int i = 0; i < objects.size(); i++){
-			tempObject = objects.get(i);
-			tempObject.tick();
-		}
+		moveContainer.update(delta);
 	}
 	
 	public void render(Graphics2D g2d){
+		
 		for(int i = 0; i < objects.size(); i++){
 			GameObject tempObject = objects.get(i);
 			

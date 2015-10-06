@@ -21,6 +21,10 @@ public class Trail extends GameObject {
 		this.life = life;
 	}
 
+	public Trail(int x, int y, ID id) {
+		super(x, y, id);
+	}
+
 	public void tick() {
 		if(alpha > life){
 			alpha -= (life - 0.0001f);

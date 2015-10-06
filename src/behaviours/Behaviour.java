@@ -1,7 +1,9 @@
 package behaviours;
 
+import model.GameObject;
+
 public abstract class Behaviour {
-	public abstract void registerBehaviour();
+	protected GameObject object;
 	
-	public abstract void doBehaviour(double delta);
+	public abstract void update(double delta);
 }

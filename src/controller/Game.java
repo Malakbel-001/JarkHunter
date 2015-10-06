@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
+import behaviours.MoveWithTrailBehaviour;
 import model.BasicEnemy;
 import model.HUD;
 import model.Handler;
@@ -30,13 +31,15 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(new MouseInput(handler));
 		
+		//spawner / unitFactory //TODO!!
+		
 		new Window(WIDTH, HEIGHT, "JarkHunt", this);
 		
 		random = new Random();
 		
 //		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler)); //spawn in the middle of the screen
 		for(int i = 0; i < 5; i++){
-			handler.addObject(new BasicEnemy(random, ID.BasicEnemy, handler));
+//			handler.addObject(new BasicEnemy(random, ID.BasicEnemy, handler, new MoveWithTrailBehaviour(3, 3, )));
 		}
 	}
 	

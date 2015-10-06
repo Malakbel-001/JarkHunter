@@ -1,5 +1,9 @@
 package container;
 
-public class CollidableContainer {
+import behaviours.CollidableBehaviour;
 
+public class CollidableContainer {
+	public void add(CollidableBehaviour collidableBehaviour) {
+		
+	}
 }

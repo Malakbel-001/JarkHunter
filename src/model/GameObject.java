@@ -13,9 +13,8 @@ import container.MoveContainer;
 
 public abstract class GameObject {
 	
-	protected int x, y; // can only be used by stuff that extends GameObject
+	protected double x, y; // can only be used by stuff that extends GameObject
 	protected ID id;
-	protected int velX, velY;
 	protected int width, height;
 	protected Image img;
 	
@@ -37,10 +36,10 @@ public abstract class GameObject {
 	public abstract void render(Graphics2D g2d);
 	public abstract Rectangle getBounds();
 	
-	protected double getCenterObjectX(int x){
+	public double getCenterObjectX(int x){
 		return x+width*0.5;
 	}
-	protected double getCenterObjectY(int y){
+	public double getCenterObjectY(int y){
 		return y+height*0.5;
 	}
 	public void setX(int x){
@@ -49,10 +48,10 @@ public abstract class GameObject {
 	public void setY(int y){
 		this.y = y;
 	}
-	public int getX(){
+	public double getX(){
 		return x;
 	}
-	public int getY(){
+	public double getY(){
 		return y;
 	}
 	public void setId(ID id){
@@ -61,16 +60,16 @@ public abstract class GameObject {
 	public ID getId(){
 		return id;
 	}
-	public void setVelX(int velX){
-		this.velX = velX;
+	public int getWidth(){
+		return width;
 	}
-	public void setVelY(int velY){
-		this.velY = velY;
+	public int getHeight(){
+		return height;
 	}
-	public int getVelX(){
-		return velX;
+	public void setWidth(int width){
+		this.width = width;
 	}
-	public int getVelY(){
-		return velY;
+	public void setHeight(int height){
+		this.height = height;
 	}
 }
