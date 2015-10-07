@@ -17,6 +17,7 @@ import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
 import controller.Game;
+import controller.State;
 
 public class BasicEnemy extends GameObject {
 
@@ -57,6 +58,7 @@ public class BasicEnemy extends GameObject {
 		this.moveContainer.remove(moveBehaviour);
 		this.drawContainer.remove(drawBehaviour);
 		this.collidableContainer.remove(collidableBehaviour);
+		state = State.DEAD;
 	}
 	
 	public void setVelX(int velX){
