@@ -12,7 +12,7 @@ import behaviours.BehaviourFactory;
 import behaviours.CollidableBehaviour;
 import behaviours.DrawBehaviour;
 import behaviours.MoveBehaviour;
-import behaviours.MoveTrailBehaviour;
+import behaviours.TrailBehaviour;
 import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
@@ -20,6 +20,8 @@ import controller.Game;
 
 public class BasicEnemy extends GameObject {
 
+	protected int velX, velY;
+	
 	protected MoveContainer moveContainer;
 	protected MoveBehaviour moveBehaviour;
 	protected DrawContainer drawContainer;
@@ -57,23 +59,36 @@ public class BasicEnemy extends GameObject {
 		this.collidableContainer.remove(collidableBehaviour);
 	}
 	
-	public void render(Graphics2D g2d) {
-		g2d.setColor(Color.red);
-		g2d.drawRect((int) x,(int) y, width, height);
-		
-		//get rotation angle depending on velocity
-		double radians = Math.atan2(moveBehaviour.getVelY(), moveBehaviour.getVelX()) + Math.toRadians(90);
-		
-		//remember old transform to revert rotation on graphics
-		AffineTransform originalTransform = g2d.getTransform();
-		
-		//rotate all the following graphic draw actions
-		g2d.rotate(radians, getCenterObjectX((int) x), getCenterObjectY((int) y)); //make sure to give the center point of the image!!!
-		
-		//draw the image, while being rotated
-		g2d.drawImage(img, (int) x, (int) y, null);
-		
-		//revert transform / rotation on graphics, so OTHER GAMEOBJECTS that get RENDERED, do NOT get rotated!
-		g2d.setTransform(originalTransform);
+//	public void render(Graphics2D g2d) {
+//		g2d.setColor(Color.red);
+//		g2d.drawRect((int) x,(int) y, width, height);
+//		
+//		//get rotation angle depending on velocity
+//		double radians = Math.atan2(moveBehaviour.getVelY(), moveBehaviour.getVelX()) + Math.toRadians(90);
+//		
+//		//remember old transform to revert rotation on graphics
+//		AffineTransform originalTransform = g2d.getTransform();
+//		
+//		//rotate all the following graphic draw actions
+//		g2d.rotate(radians, getCenterObjectX((int) x), getCenterObjectY((int) y)); //make sure to give the center point of the image!!!
+//		
+//		//draw the image, while being rotated
+//		g2d.drawImage(img, (int) x, (int) y, null);
+//		
+//		//revert transform / rotation on graphics, so OTHER GAMEOBJECTS that get RENDERED, do NOT get rotated!
+//		g2d.setTransform(originalTransform);
+//	}
+	
+	public void setVelX(int velX){
+		this.velX = velX;
+	}
+	public void setVelY(int velY){
+		this.velY = velY;
+	}
+	public int getVelX(){
+		return velX;
+	}
+	public int getVelY(){
+		return velY;
 	}
 }

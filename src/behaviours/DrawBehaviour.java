@@ -10,6 +10,7 @@ public class DrawBehaviour extends Behaviour {
 	
 	public void update(Graphics2D g2d) {
 		this.superUpdate(g2d);
+		g2d.fillRect((int) object.getX(),(int) object.getY(), object.getWidth(), object.getHeight());
 	}
 	
 	protected void superUpdate(Graphics2D g2d) {

@@ -1,5 +1,6 @@
 package behaviours;
 
+import model.BasicEnemy;
 import model.GameObject;
 
 public class BehaviourFactory {
@@ -12,7 +13,7 @@ public class BehaviourFactory {
 				break;
 			case ShipEnemy:
 				drawBehaviour = new DrawImageBehaviour();
-				drawBehaviour.registerBehaviour(object); //I hope this works TODO
+				drawBehaviour.registerBehaviour(object);
 				break;
 			case Trail:
 				break; //TODO
@@ -21,19 +22,19 @@ public class BehaviourFactory {
 		}
 		return drawBehaviour;
 	}
-	public MoveBehaviour createMoveBehaviour(GameObject object) {
+	public MoveBehaviour createMoveBehaviour(BasicEnemy basicEnemy) {
 		MoveBehaviour moveBehaviour = null;
-		switch (object.getId()) {
+		switch (basicEnemy.getId()) {
 			case BasicEnemy:
 				moveBehaviour = new MoveBehaviour();
-				moveBehaviour.register(3, 3, object);
+				moveBehaviour.register(3, 3, basicEnemy);
 				
 	//			MoveTrailBehaviour moveTrailBehaviour = new MoveTrailBehaviour();
 	//			moveTrailBehaviour.register(3, 3, object, null);
 				break;
 			case ShipEnemy:
 				moveBehaviour = new MoveImageBehaviour();
-				moveBehaviour.register(5, 3, object); //I hope this works TODO
+				moveBehaviour.register(5, 3, basicEnemy);
 			default:
 				break;
 		}
@@ -55,4 +56,7 @@ public class BehaviourFactory {
 		}
 		return collidableBehaviour;
 	}
+//	public TrailBehaviour createTrailBehaviour() {
+//		
+//	}
 }

@@ -7,7 +7,7 @@ import java.awt.image.BufferStrategy;
 import java.util.Random;
 
 import behaviours.BehaviourFactory;
-import behaviours.MoveTrailBehaviour;
+import behaviours.TrailBehaviour;
 import model.BasicEnemy;
 import model.HUD;
 import model.Handler;

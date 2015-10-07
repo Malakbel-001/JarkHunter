@@ -10,17 +10,16 @@ public class MoveImageBehaviour extends MoveBehaviour {
 	public void update(double delta) {
 		this.superUpdate(delta);
 		
-		if(object.getId().equals(ID.ShipEnemy)) {
+		if(basicEnemy instanceof ImageEnemy) {
 			//get rotation angle depending on velocity
-			((ImageEnemy) this.object).setRadians(Math.atan2(this.getVelY(), this.getVelX()) + Math.toRadians(90));
+			((ImageEnemy) this.basicEnemy).setRadians(Math.atan2(basicEnemy.getVelY(), basicEnemy.getVelX()) + Math.toRadians(90));
 		}
 		else {
 			try {
 				throw new Exception();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-				System.out.println("Not supposed to, ShipEnemy <-> BasicEnemy");
+				System.out.println("Not supposed to be used for something other than ImageEnemy");
 			}
 		}
 		
