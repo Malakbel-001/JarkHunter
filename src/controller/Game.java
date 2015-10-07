@@ -73,6 +73,11 @@ public class Game extends Canvas implements Runnable {
 				delta--;
 			}
 			if(running){
+				if(handler.getInput().size() >0){
+					handler.handleInput();
+				}
+				//check input
+				//update aan hand van input				
 				render();
 			}
 			frames++;
