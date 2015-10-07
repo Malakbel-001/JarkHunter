@@ -8,38 +8,47 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import behaviours.MoveWithTrailBehaviour;
+import behaviours.BehaviourFactory;
+import behaviours.CollidableBehaviour;
+import behaviours.DrawBehaviour;
+import behaviours.MoveBehaviour;
+import behaviours.MoveTrailBehaviour;
+import container.CollidableContainer;
+import container.DrawContainer;
 import container.MoveContainer;
 import controller.Game;
 
 public class BasicEnemy extends GameObject {
 
-	private MoveWithTrailBehaviour moveBehaviour;
 	private MoveContainer moveContainer;
+	private MoveBehaviour moveBehaviour;
+	private DrawContainer drawContainer;
+	private DrawBehaviour drawBehaviour;
+	private CollidableContainer collidableContainer;
+	private CollidableBehaviour collidableBehaviour;
 	
-	public BasicEnemy(int x, int y, ID id, Handler handler, MoveWithTrailBehaviour move) {
-		super(x, y, id);
-		initialize(handler, move);
-	}
-	
-	public BasicEnemy(Random random, ID id, Handler handler, MoveWithTrailBehaviour move) {
+	public BasicEnemy(Random random, ID id, BehaviourFactory behaviourFactory, MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer) {
 		super(0, 0, id);
-		initialize(handler, move);
-		initializeRandomSpawn(random);
-	}
-	
-	private void initializeRandomSpawn(Random random) {
+		
 		x = random.nextInt(Game.WIDTH - width);
 		y = random.nextInt((int) (Game.HEIGHT - (height*1.5)));
-	}
-	
-	private void initialize(Handler handler, MoveWithTrailBehaviour moveBehaviour) {
-		this.moveBehaviour = moveBehaviour;
 		
 		this.img = new ImageIcon(this.getClass().getResource("../images/chaser.png")).getImage();
 		
 		width = img.getWidth(null);
 		height = img.getHeight(null);
+		
+		this.moveContainer = moveContainer;
+		this.moveBehaviour = behaviourFactory.createMoveBehaviour(this);
+		moveContainer.add(moveBehaviour);
+		
+		this.drawContainer = drawContainer;
+		this.drawBehaviour = behaviourFactory.createDrawBehaviour(this);
+		drawContainer.add(drawBehaviour);
+		
+		this.collidableContainer = collidableContainer;
+		this.collidableBehaviour = behaviourFactory.createCollidableBehaviour(this);
+		collidableContainer.add(collidableBehaviour);
 	}
 	
 	public Rectangle getBounds()  {
@@ -48,6 +57,10 @@ public class BasicEnemy extends GameObject {
 	
 	public void tick() {
 		
+	}
+	
+	public void remove(){
+		this.moveContainer.remove(moveBehaviour);
 	}
 	
 	public void render(Graphics2D g2d) {

@@ -9,15 +9,16 @@ import container.MoveContainer;
 
 public class Handler {
 	
-	private LinkedList<GameObject> objects = new LinkedList<GameObject>();
-	private DrawContainer drawContainer = new DrawContainer();
-	private MoveContainer moveContainer = new MoveContainer();
-	private CollidableContainer collidableContainer = new CollidableContainer();
+	private LinkedList<GameObject> objects;
+	private DrawContainer drawContainer;
+	private MoveContainer moveContainer;
+	private CollidableContainer collidableContainer;
 	
 	public Handler(){
-		DrawContainer drawContainer = new DrawContainer();
-		MoveContainer moveContainer = new MoveContainer();
-		CollidableContainer collidableContainer = new CollidableContainer();
+		objects = new LinkedList<GameObject>();
+		drawContainer = new DrawContainer();
+		moveContainer = new MoveContainer();
+		collidableContainer = new CollidableContainer();
 	}
 	
 	public void tick(double delta){
@@ -36,12 +37,19 @@ public class Handler {
 	public void addObject(GameObject object){
 		this.objects.add(object);
 	}
-	
 	public void removeObject(GameObject object){
 		this.objects.remove(object);
 	}
-	
 	public LinkedList<GameObject> getObjectList(){
 		return objects;
+	}
+	public MoveContainer getMoveContainer(){
+		return moveContainer;
+	}
+	public DrawContainer getDrawContainer(){
+		return drawContainer;
+	}
+	public CollidableContainer getCollidableContainer(){
+		return collidableContainer;
 	}
 }

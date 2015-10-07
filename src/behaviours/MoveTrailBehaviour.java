@@ -10,7 +10,8 @@ import model.Handler;
 import model.ID;
 import model.Trail;
 
-public class MoveWithTrailBehaviour extends MoveBehaviour {
+public class MoveTrailBehaviour extends MoveBehaviour {
+	protected MoveContainer moveContainer;
 	protected DrawContainer drawContainer;
 	protected BehaviourFactory behaviourFactory;
 	
@@ -55,7 +56,7 @@ public class MoveWithTrailBehaviour extends MoveBehaviour {
 //		handler.addObject(new Trail((int) calculatePlacementTrailX(), (int) calculatePlacementTrailY(), ID.Trail, Color.white, (int) (width * 0.25), (int) (height * 0.25), 0.03f, handler));
 		
 		//cool result, very interesting. Not yet working as intended, but still =P
-		drawContainer.add(BehaviourFactory.createDrawBehaviour(object));
+		drawContainer.add(behaviourFactory.createDrawBehaviour(object));
 //		handler.addObject(new Trail((int) calculateWavePattern1X(), (int) calculateWavePattern1Y(), ID.Trail, Color.white, (int) (object.getWidth() * 0.1), (int) (object.getHeight() * 0.1), 0.03f, handler));
 //		handler.addObject(new Trail((int) calculateWavePattern2X(), (int) calculateWavePattern2Y(), ID.Trail, Color.orange, (int) (width * 0.1), (int) (height * 0.1), 0.03f, handler));
 	}

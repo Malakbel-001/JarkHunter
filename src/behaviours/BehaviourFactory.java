@@ -3,37 +3,39 @@ package behaviours;
 import model.GameObject;
 
 public class BehaviourFactory {
-	public static DrawBehaviour createDrawBehaviour(GameObject object) {
+	public DrawBehaviour createDrawBehaviour(GameObject object) {
 		switch (object.getId()) {
 			case BasicEnemy:
-				return new DrawBehaviour();
+				DrawBehaviour drawBehaviour = new DrawBehaviour();
+				drawBehaviour.registerBehaviour(object);
+				return drawBehaviour;
 			case Trail:
-				return new DrawBehaviour();
+				return null; //TODO
 			default:
 				return null;
 		}
 	}
-	public static MoveBehaviour createMoveBehaviour(GameObject object) {
+	public MoveBehaviour createMoveBehaviour(GameObject object) {
 		switch (object.getId()) {
 		case BasicEnemy:
-			MoveWithTrailBehaviour moveTrailBehaviour = new MoveWithTrailBehaviour();
-			moveTrailBehaviour.register(3, 3, object);
-			return new MoveBehaviour();
-		case Trail:
+			MoveBehaviour moveBehaviour = new MoveBehaviour();
+			moveBehaviour.register(3, 3, object);
 			
-			return new MoveWithTrailBehaviour();
+//			MoveTrailBehaviour moveTrailBehaviour = new MoveTrailBehaviour();
+//			moveTrailBehaviour.register(3, 3, object, null);
+			return moveBehaviour;
 		default:
 			return null;
 		}
 	}
-	public static CollidableBehaviour createCollidableBehaviour(GameObject object) {
+	public CollidableBehaviour createCollidableBehaviour(GameObject object) {
 		switch (object.getId()) {
 		case BasicEnemy:
-			return new CollidableBehaviour();
-		case Trail:
-			return new CollidableBehaviour();
+			CollidableBehaviour collidableBehaviour = new CollidableBehaviour();
+			collidableBehaviour.registerBehaviour(object);
+			return collidableBehaviour;
 		default:
-			return new CollidableBehaviour();		
+			return null;		
 		}
 	}
 }

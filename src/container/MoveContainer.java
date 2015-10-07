@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import behaviours.MoveBehaviour;
 
 public class MoveContainer extends Container {
-	private LinkedList<MoveBehaviour> moveBehaviours = new LinkedList<MoveBehaviour>();
+	private LinkedList<MoveBehaviour> moveBehaviours;
 	
 	public MoveContainer() {
 		moveBehaviours = new LinkedList<MoveBehaviour>();
@@ -24,5 +24,9 @@ public class MoveContainer extends Container {
 //			tempObject = objects.get(i);
 //			tempObject.tick();
 //		}
+	}
+	
+	public void remove(MoveBehaviour moveBehaviour) {
+		moveBehaviours.remove(moveBehaviour);
 	}
 }

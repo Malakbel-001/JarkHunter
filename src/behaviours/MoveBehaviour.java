@@ -1,13 +1,11 @@
 package behaviours;
 
-import container.MoveContainer;
 import controller.Game;
 import model.GameObject;
 
 public class MoveBehaviour extends Behaviour {
 	protected int velX, velY;
 	protected GameObject object;
-	protected MoveContainer moveContainer;
 	
 	public void setVelX(int velX){
 		this.velX = velX;
@@ -22,11 +20,10 @@ public class MoveBehaviour extends Behaviour {
 		return velY;
 	}
 	
-	public void register(final int velX, final int velY, GameObject object, MoveContainer moveContainer) {
+	public void register(final int velX, final int velY, GameObject object) {
 		this.velX = velX;
 		this.velY = velY;
 		this.object = object;
-		this.moveContainer = moveContainer;
 	}
 	
 	public void update(double delta) {

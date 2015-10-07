@@ -18,14 +18,6 @@ public abstract class GameObject {
 	protected int width, height;
 	protected Image img;
 	
-	protected CollidableBehaviour collidableBehaviour;
-	protected DrawBehaviour drawBehaviour;
-	protected MoveBehaviour moveBehaviour;
-	
-	protected CollidableContainer collidableContainer;
-	protected DrawContainer drawContainer;
-	protected MoveContainer moveContainer;
-	
 	public GameObject(int x, int y, ID id){
 		this.x = x;
 		this.y = y;
