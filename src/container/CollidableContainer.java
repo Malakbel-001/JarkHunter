@@ -29,6 +29,7 @@ public class CollidableContainer {
 			if(coll.getBounds().contains(input.peek().getPoint())){
 				coll.getObject().remove();
 				handler.removeObject(coll.getObject());
+				handler.score++;
 			}
 		}
 	}

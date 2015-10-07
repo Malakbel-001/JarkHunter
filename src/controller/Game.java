@@ -112,7 +112,7 @@ public class Game extends Canvas implements Runnable {
 		g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
 		handler.render(g2d);
-		window.infoLabel.setText("Score: " + handler.getScore());
+		window.infoLabel.setText("Score: " + handler.score);
 
 		g2d.dispose();
 		bs.show();

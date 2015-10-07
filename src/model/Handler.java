@@ -18,6 +18,8 @@ public class Handler {
 	private DrawContainer drawContainer;
 	private MoveContainer moveContainer;
 	private CollidableContainer collidableContainer;
+	
+	public int score;
 
 	
 	public Handler(){
