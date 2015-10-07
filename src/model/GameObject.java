@@ -18,14 +18,14 @@ public abstract class GameObject {
 	protected int width, height;
 	protected Image img;
 	
-	public GameObject(int x, int y, ID id){
+	public GameObject(int x, int y, int width, int height, ID id){
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		this.id = id;
 	}
 	
-	public abstract void tick();
-	public abstract void render(Graphics2D g2d);
 	public abstract Rectangle getBounds();
 	
 	public double getCenterObjectX(int x){

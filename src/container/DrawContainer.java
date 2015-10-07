@@ -21,6 +21,7 @@ public class DrawContainer extends Container {
 	}
 
 	public void update(Graphics2D g2d) {
+//		System.out.println(drawBehaviours.size());
 		for(DrawBehaviour drawBehaviour : drawBehaviours) {
 			drawBehaviour.update(g2d);
 		}

@@ -22,6 +22,6 @@ public class UnitFactory {
 	}
 	
 	public BasicEnemy createBasicEnemy(Random random){
-		return new BasicEnemy(random, ID.BasicEnemy, behaviourFactory, handler.getMoveContainer(), handler.getDrawContainer(), handler.getCollidableContainer());
+		return new BasicEnemy(random, 48, 48, ID.BasicEnemy, behaviourFactory, handler.getMoveContainer(), handler.getDrawContainer(), handler.getCollidableContainer());
 	}
 }

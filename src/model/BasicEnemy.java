@@ -27,13 +27,9 @@ public class BasicEnemy extends GameObject {
 	private CollidableContainer collidableContainer;
 	private CollidableBehaviour collidableBehaviour;
 	
-	public BasicEnemy(Random random, ID id, BehaviourFactory behaviourFactory, MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer) {
-		super(0, 0, id);
-		
-		this.img = new ImageIcon(this.getClass().getResource("../images/chaser.png")).getImage();
-		
-		width = img.getWidth(null);
-		height = img.getHeight(null);
+	public BasicEnemy(Random random, int width, int height, ID id, BehaviourFactory behaviourFactory, 
+			MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer) {
+		super(0, 0, width, height, id);
 		
 		x = random.nextInt(Game.WIDTH - width);
 		y = random.nextInt((int) (Game.HEIGHT - (height*1.5)));
@@ -55,12 +51,10 @@ public class BasicEnemy extends GameObject {
 		return new Rectangle((int) x, (int) y, width, height);
 	}
 	
-	public void tick() {
-		
-	}
-	
 	public void remove(){
 		this.moveContainer.remove(moveBehaviour);
+		this.drawContainer.remove(drawBehaviour);
+		this.collidableContainer.remove(collidableBehaviour);
 	}
 	
 	public void render(Graphics2D g2d) {

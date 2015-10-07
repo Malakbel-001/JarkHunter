@@ -27,6 +27,10 @@ public class MoveBehaviour extends Behaviour {
 	}
 	
 	public void update(double delta) {
+		this.superUpdate(delta);
+	}
+	
+	protected void superUpdate(double delta) {
 		object.setX((int) (object.getX() + velX * delta));
 		object.setY((int) (object.getY() + velY * delta));
 		
