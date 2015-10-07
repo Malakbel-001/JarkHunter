@@ -1,5 +1,6 @@
 package behaviours;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
@@ -7,7 +8,8 @@ import model.ImageEnemy;
 
 public class DrawImageBehaviour extends DrawBehaviour {
 	public void update(Graphics2D g2d) {
-		this.superUpdate(g2d); //to be disabled
+		g2d.setColor(Color.white);
+		g2d.drawRect((int) object.getX(),(int) object.getY(), object.getWidth(), object.getHeight());
 		if(object instanceof ImageEnemy) {
 			//remember old transform to revert rotation on graphics
 			AffineTransform originalTransform = g2d.getTransform();

@@ -69,7 +69,6 @@ public class Handler {
 		this.objects.add(object);
 	}
 	public void removeObject(GameObject object){
-		
 		this.objects.remove(object);
 	}
 	public LinkedList<GameObject> getObjectList(){
