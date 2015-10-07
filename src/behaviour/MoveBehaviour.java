@@ -1,4 +1,4 @@
-package behaviours;
+package behaviour;
 
 import controller.Game;
 import model.BasicEnemy;

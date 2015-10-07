@@ -1,10 +1,11 @@
-package behaviours;
+package behaviour;
 
 import java.awt.Color;
 
 import container.DrawContainer;
 import container.MoveContainer;
 import controller.Game;
+import factory.BehaviourFactory;
 import model.GameObject;
 import model.Handler;
 import model.ID;

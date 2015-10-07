@@ -1,11 +1,14 @@
-package model;
+package factory;
 
 import java.awt.Image;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import behaviours.BehaviourFactory;
+import model.BasicEnemy;
+import model.Handler;
+import model.ID;
+import model.ImageEnemy;
 
 public class UnitFactory {
 	private Handler handler;

@@ -1,4 +1,4 @@
-package behaviours;
+package behaviour;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

@@ -8,15 +8,15 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import behaviours.BehaviourFactory;
-import behaviours.CollidableBehaviour;
-import behaviours.DrawBehaviour;
-import behaviours.MoveBehaviour;
-import behaviours.TrailBehaviour;
+import behaviour.CollidableBehaviour;
+import behaviour.DrawBehaviour;
+import behaviour.MoveBehaviour;
+import behaviour.TrailBehaviour;
 import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
 import controller.Game;
+import factory.BehaviourFactory;
 
 public class BasicEnemy extends GameObject {
 

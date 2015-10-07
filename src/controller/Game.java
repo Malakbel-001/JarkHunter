@@ -8,12 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-import behaviours.BehaviourFactory;
-import behaviours.TrailBehaviour;
+import behaviour.TrailBehaviour;
+import factory.BehaviourFactory;
+import factory.UnitFactory;
 import model.BasicEnemy;
 import model.Handler;
 import model.ID;
-import model.UnitFactory;
+import model.State;
 import view.Window;
 
 public class Game extends Canvas implements Runnable {

@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import behaviours.CollidableBehaviour;
+import behaviour.CollidableBehaviour;
 import model.Handler;
 
 public class CollidableContainer {

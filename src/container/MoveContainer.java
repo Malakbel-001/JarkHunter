@@ -2,7 +2,7 @@ package container;
 
 import java.util.ArrayList;
 
-import behaviours.MoveBehaviour;
+import behaviour.MoveBehaviour;
 
 public class MoveContainer {
 	private final ArrayList<MoveBehaviour> moveBehaviours;

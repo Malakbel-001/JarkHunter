@@ -1,5 +1,10 @@
-package behaviours;
+package factory;
 
+import behaviour.CollidableBehaviour;
+import behaviour.DrawBehaviour;
+import behaviour.DrawImageBehaviour;
+import behaviour.MoveBehaviour;
+import behaviour.MoveImageBehaviour;
 import model.BasicEnemy;
 import model.GameObject;
 

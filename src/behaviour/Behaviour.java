@@ -1,4 +1,4 @@
-package behaviours;
+package behaviour;
 
 import model.GameObject;
 

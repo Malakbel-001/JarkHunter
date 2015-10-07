@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 
-import behaviours.CollidableBehaviour;
-import behaviours.DrawBehaviour;
-import behaviours.MoveBehaviour;
+import behaviour.CollidableBehaviour;
+import behaviour.DrawBehaviour;
+import behaviour.MoveBehaviour;
 import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;

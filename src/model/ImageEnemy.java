@@ -5,12 +5,12 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import behaviours.BehaviourFactory;
-import behaviours.MoveImageBehaviour;
+import behaviour.MoveImageBehaviour;
 import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
 import controller.Game;
+import factory.BehaviourFactory;
 
 public class ImageEnemy extends BasicEnemy {
 	

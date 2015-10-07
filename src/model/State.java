@@ -1,7 +1,7 @@
-package controller;
+package model;
 
 public enum State {
 	RUNNING,
 	NEXTLEVEL,
-	WON,
+	WON;
 }

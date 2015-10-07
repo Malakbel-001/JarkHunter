@@ -3,7 +3,7 @@ package container;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import behaviours.DrawBehaviour;
+import behaviour.DrawBehaviour;
 
 public class DrawContainer {
 	public ArrayList<DrawBehaviour> drawBehaviours;
