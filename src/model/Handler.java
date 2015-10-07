@@ -17,6 +17,7 @@ public class Handler {
 	private DrawContainer drawContainer;
 	private MoveContainer moveContainer;
 	private CollidableContainer collidableContainer;
+	private int score = 0;
 
 	
 	public Handler(){
@@ -53,6 +54,7 @@ public class Handler {
 				if(tempObject.getId() == ID.BasicEnemy){
 					if(tempObject.getBounds().contains(input.peek().getPoint())){
 						removeObject(tempObject);
+						score++;
 					}
 				}
 				
@@ -88,5 +90,9 @@ public class Handler {
 	
 	public LinkedList<MouseEvent> getInput(){
 		return input;
+	}
+	
+	public int getScore(){
+		return score;
 	}
 }
