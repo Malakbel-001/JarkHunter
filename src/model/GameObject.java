@@ -1,26 +1,16 @@
 package model;
 
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
-
-import behaviour.CollidableBehaviour;
-import behaviour.DrawBehaviour;
-import behaviour.MoveBehaviour;
-import container.CollidableContainer;
-import container.DrawContainer;
-import container.MoveContainer;
-import model.State;
 
 public abstract class GameObject {
-	
-	protected double x, y; // can only be used by stuff that extends GameObject
+
+	protected double x, y;// can only be used by stuff that extends GameObject
 	protected ID id;
 	protected int width, height;
 	protected Image img;
 	protected State state;
-	
-	public GameObject(int x, int y, int width, int height, ID id){
+
+	public GameObject(final int x, final int y, final int width, final int height, final ID id) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -28,46 +18,58 @@ public abstract class GameObject {
 		this.id = id;
 		this.state = State.ALIVE;
 	}
-	
+
 	public abstract void remove();
-	
-	public double getCenterObjectX(int x){
-		return x+width*0.5;
+
+	public double getCenterObjectX(final int x) {
+		return x + width * 0.5;
 	}
-	public double getCenterObjectY(int y){
-		return y+height*0.5;
+
+	public double getCenterObjectY(final int y) {
+		return y + height * 0.5;
 	}
-	public void setX(int x){
+
+	public void setX(final int x) {
 		this.x = x;
 	}
-	public void setY(int y){
+
+	public void setY(final int y) {
 		this.y = y;
 	}
-	public double getX(){
+
+	public double getX() {
 		return x;
 	}
-	public double getY(){
+
+	public double getY() {
 		return y;
 	}
-	public void setId(ID id){
+
+	public void setId(final ID id) {
 		this.id = id;
 	}
-	public ID getId(){
+
+	public ID getId() {
 		return id;
 	}
-	public int getWidth(){
+
+	public int getWidth() {
 		return width;
 	}
-	public int getHeight(){
+
+	public int getHeight() {
 		return height;
 	}
-	public void setWidth(int width){
+
+	public void setWidth(final int width) {
 		this.width = width;
 	}
-	public void setHeight(int height){
+
+	public void setHeight(final int height) {
 		this.height = height;
 	}
-	public State getState(){
+
+	public State getState() {
 		return state;
 	}
 }

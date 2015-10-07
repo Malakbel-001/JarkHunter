@@ -1,6 +1,5 @@
 package model;
 
 public enum State {
-	DEAD,
-	ALIVE,
+	DEAD, ALIVE,
 }
