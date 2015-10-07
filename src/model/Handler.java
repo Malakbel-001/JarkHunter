@@ -1,26 +1,41 @@
 package model;
 
-import java.awt.Event;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
+import container.CollidableContainer;
+import container.DrawContainer;
+import container.MoveContainer;
+
 public class Handler {
 	
-	private LinkedList<GameObject> object = new LinkedList<GameObject>();
-	private LinkedList<MouseEvent> input = new LinkedList<MouseEvent>();
+
+	private LinkedList<GameObject> objects;
+	private LinkedList<MouseEvent> input;
+
+	private DrawContainer drawContainer;
+	private MoveContainer moveContainer;
+	private CollidableContainer collidableContainer;
+
 	
-	public void tick(){
-		GameObject tempObject = null;
-		for(int i = 0; i < object.size(); i++){
-			tempObject = object.get(i);
-			tempObject.tick();
-		}
+	public Handler(){
+		objects = new LinkedList<GameObject>();
+		input = new LinkedList<MouseEvent>();
+		drawContainer = new DrawContainer();
+		moveContainer = new MoveContainer();
+		collidableContainer = new CollidableContainer();
+	}
+	
+	public void tick(double delta){
+		moveContainer.update(delta);
 	}
 	
 	public void render(Graphics2D g2d){
-		for(int i = 0; i < object.size(); i++){
-			GameObject tempObject = object.get(i);
+//		drawContainer.update(g2d);
+		
+		for(int i = 0; i < objects.size(); i++){
+			GameObject tempObject = objects.get(i);
 			
 			tempObject.render(g2d);
 		}
@@ -32,8 +47,8 @@ public class Handler {
 			
 			
 			GameObject tempObject = null;
-			for(int i = 0; i < object.size(); i++){
-				tempObject = object.get(i);
+			for(int i = 0; i < objects.size(); i++){
+				tempObject = objects.get(i);
 				
 				if(tempObject.getId() == ID.BasicEnemy){
 					if(tempObject.getBounds().contains(input.peek().getPoint())){
@@ -49,15 +64,22 @@ public class Handler {
 	}
 	
 	public void addObject(GameObject object){
-		this.object.add(object);
+		this.objects.add(object);
 	}
-	
 	public void removeObject(GameObject object){
-		this.object.remove(object);
+		this.objects.remove(object);
 	}
-	
 	public LinkedList<GameObject> getObjectList(){
-		return object;
+		return objects;
+	}
+	public MoveContainer getMoveContainer(){
+		return moveContainer;
+	}
+	public DrawContainer getDrawContainer(){
+		return drawContainer;
+	}
+	public CollidableContainer getCollidableContainer(){
+		return collidableContainer;
 	}
 	
 	public void addInput(MouseEvent e){

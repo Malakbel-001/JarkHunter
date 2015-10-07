@@ -21,6 +21,10 @@ public class Trail extends GameObject {
 		this.life = life;
 	}
 
+	public Trail(int x, int y, ID id) {
+		super(x, y, id);
+	}
+
 	public void tick() {
 		if(alpha > life){
 			alpha -= (life - 0.0001f);
@@ -34,7 +38,7 @@ public class Trail extends GameObject {
 		g2d.setComposite(makeTransparent(alpha));
 		
 		g2d.setColor(color);
-		g2d.fillRect(x, y, width, height);
+		g2d.fillRect((int) x, (int) y, width, height);
 		
 		g2d.setComposite(makeTransparent(1));
 	}

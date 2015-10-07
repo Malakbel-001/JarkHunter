@@ -6,10 +6,13 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
+import behaviours.BehaviourFactory;
+import behaviours.MoveTrailBehaviour;
 import model.BasicEnemy;
 import model.HUD;
 import model.Handler;
 import model.ID;
+import model.UnitFactory;
 import view.Window;
 
 public class Game extends Canvas implements Runnable {
@@ -20,24 +23,22 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean running = false;
 	
-	private Random random;
+	private UnitFactory unitFactory;
+	private BehaviourFactory behaviourFactory;
+	
 	private Handler handler;
 	private HUD hud;
 	
 	public Game(){
 		handler = new Handler();
 		hud = new HUD();
-		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(new MouseInput(handler));
 		
+		behaviourFactory = new BehaviourFactory();
+		unitFactory = new UnitFactory(handler, behaviourFactory);
+		unitFactory.createLevel1(); //change position? TODO
+
 		new Window(WIDTH, HEIGHT, "JarkHunt", this);
-		
-		random = new Random();
-		
-//		handler.addObject(new BasicEnemy(WIDTH/2-32, HEIGHT/2-32, ID.BasicEnemy, handler)); //spawn in the middle of the screen
-		for(int i = 0; i < 5; i++){
-			handler.addObject(new BasicEnemy(random, ID.BasicEnemy, handler));
-		}
 	}
 	
 	public synchronized void start(){
@@ -69,7 +70,7 @@ public class Game extends Canvas implements Runnable {
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			while(delta >= 1){
-				tick();
+				tick(delta);
 				delta--;
 			}
 			if(running){
@@ -84,15 +85,15 @@ public class Game extends Canvas implements Runnable {
 			
 			if(System.currentTimeMillis() - timer > 1000){
 				timer+= 1000;
-				System.out.println("FPS: " + frames);
+//				System.out.println("FPS: " + frames);
 				frames = 0;
 			}
 		}
 		stop();
 	}
 	
-	private void tick(){
-		handler.tick();
+	private void tick(double delta){
+		handler.tick(delta);
 	}
 	
 	private void render(){
