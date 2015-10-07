@@ -38,10 +38,12 @@ public class BehaviourFactory {
 				break;
 			case ShipEnemy:
 				moveBehaviour = new MoveImageBehaviour();
-				moveBehaviour.register(1, 1, basicEnemy);
+				moveBehaviour.register(2, 4, basicEnemy);
+				break;
 			case RocketEnemy:
 				moveBehaviour = new MoveImageBehaviour();
-				moveBehaviour.register(7, 3, basicEnemy);
+				moveBehaviour.register(7, 2, basicEnemy);
+				break;
 			default:
 				break;
 		}
