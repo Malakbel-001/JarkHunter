@@ -10,6 +10,9 @@ public class MoveBehaviour extends Behaviour {
 		this.basicEnemy = basicEnemy;
 		basicEnemy.setVelX(velX);
 		basicEnemy.setVelY(velY);
+		
+		System.out.println("velX: "+velX);
+		System.out.println("velY: "+velY);
 	}
 	
 	public void update(double delta) {

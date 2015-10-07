@@ -19,11 +19,14 @@ public class UnitFactory {
 	}
 	
 	public void createLevel1(){
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 1; i++){
 			handler.addObject(this.createBasicEnemy(random));
 		}
-		for(int i = 0; i < 2; i++){
+		for(int i = 0; i < 1; i++){
 			handler.addObject(this.createShipEnemy(random));
+		}
+		for(int i = 0; i < 1; i++){
+			handler.addObject(this.createRocketEnemy(random));
 		}
 	}
 	
@@ -34,6 +37,14 @@ public class UnitFactory {
 	public ImageEnemy createShipEnemy(Random random){
 		Image img = new ImageIcon(this.getClass().getResource("../images/chaser.png")).getImage();
 		
-		return new ImageEnemy(img, random, img.getWidth(null), img.getHeight(null), ID.ShipEnemy, behaviourFactory, handler.getMoveContainer(), handler.getDrawContainer(), handler.getCollidableContainer());
+		return new ImageEnemy(img, random, img.getWidth(null), img.getHeight(null), ID.ShipEnemy, behaviourFactory, 
+				handler.getMoveContainer(), handler.getDrawContainer(), handler.getCollidableContainer(), 90);
+	}
+	
+	public ImageEnemy createRocketEnemy(Random random){
+		Image img = new ImageIcon(this.getClass().getResource("../images/rocket-md.png")).getImage();
+		
+		return new ImageEnemy(img, random, img.getWidth(null), img.getHeight(null), ID.RocketEnemy, behaviourFactory, 
+				handler.getMoveContainer(), handler.getDrawContainer(), handler.getCollidableContainer(), 0);
 	}
 }

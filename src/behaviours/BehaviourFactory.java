@@ -15,6 +15,10 @@ public class BehaviourFactory {
 				drawBehaviour = new DrawImageBehaviour();
 				drawBehaviour.registerBehaviour(object);
 				break;
+			case RocketEnemy:
+				drawBehaviour = new DrawImageBehaviour();
+				drawBehaviour.registerBehaviour(object);
+				break;
 			case Trail:
 				break; //TODO
 			default:
@@ -34,7 +38,10 @@ public class BehaviourFactory {
 				break;
 			case ShipEnemy:
 				moveBehaviour = new MoveImageBehaviour();
-				moveBehaviour.register(5, 3, basicEnemy);
+				moveBehaviour.register(1, 1, basicEnemy);
+			case RocketEnemy:
+				moveBehaviour = new MoveImageBehaviour();
+				moveBehaviour.register(7, 3, basicEnemy);
 			default:
 				break;
 		}
@@ -48,6 +55,10 @@ public class BehaviourFactory {
 				collidableBehaviour.registerBehaviour(basicEnemy);
 				break;
 			case ShipEnemy:
+				collidableBehaviour = new CollidableBehaviour();
+				collidableBehaviour.registerBehaviour(basicEnemy);
+				break;
+			case RocketEnemy:
 				collidableBehaviour = new CollidableBehaviour();
 				collidableBehaviour.registerBehaviour(basicEnemy);
 				break;

@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 import behaviours.BehaviourFactory;
+import behaviours.MoveImageBehaviour;
 import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
@@ -17,9 +18,10 @@ public class ImageEnemy extends BasicEnemy {
 	protected double radians = 0;
 	
 	public ImageEnemy(Image img, Random random, int width, int height, ID id, BehaviourFactory behaviourFactory,
-			MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer) {
+			MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer, int presetRotationNumber) {
 		super(random, width, height, id, behaviourFactory, moveContainer, drawContainer, collidableContainer);
 		this.img = img;
+		((MoveImageBehaviour) this.moveBehaviour).setPresetRotationNumber(presetRotationNumber);
 	}
 
 	public double getRadians() {
@@ -28,7 +30,6 @@ public class ImageEnemy extends BasicEnemy {
 	public void setRadians(double radians) {
 		this.radians = radians;
 	}
-
 	public Image getImg() {
 		return img;
 	}
