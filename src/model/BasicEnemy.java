@@ -20,12 +20,12 @@ import controller.Game;
 
 public class BasicEnemy extends GameObject {
 
-	private MoveContainer moveContainer;
-	private MoveBehaviour moveBehaviour;
-	private DrawContainer drawContainer;
-	private DrawBehaviour drawBehaviour;
-	private CollidableContainer collidableContainer;
-	private CollidableBehaviour collidableBehaviour;
+	protected MoveContainer moveContainer;
+	protected MoveBehaviour moveBehaviour;
+	protected DrawContainer drawContainer;
+	protected DrawBehaviour drawBehaviour;
+	protected CollidableContainer collidableContainer;
+	protected CollidableBehaviour collidableBehaviour;
 	
 	public BasicEnemy(Random random, int width, int height, ID id, BehaviourFactory behaviourFactory, 
 			MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer) {

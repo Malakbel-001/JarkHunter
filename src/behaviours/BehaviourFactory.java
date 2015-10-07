@@ -4,38 +4,55 @@ import model.GameObject;
 
 public class BehaviourFactory {
 	public DrawBehaviour createDrawBehaviour(GameObject object) {
+		DrawBehaviour drawBehaviour = null;
 		switch (object.getId()) {
 			case BasicEnemy:
-				DrawBehaviour drawBehaviour = new DrawBehaviour();
+				drawBehaviour = new DrawBehaviour();
 				drawBehaviour.registerBehaviour(object);
-				return drawBehaviour;
+				break;
+			case ShipEnemy:
+				drawBehaviour = new DrawImageBehaviour();
+				drawBehaviour.registerBehaviour(object); //I hope this works TODO
+				break;
 			case Trail:
-				return null; //TODO
+				break; //TODO
 			default:
-				return null;
+				break;
 		}
+		return drawBehaviour;
 	}
 	public MoveBehaviour createMoveBehaviour(GameObject object) {
+		MoveBehaviour moveBehaviour = null;
 		switch (object.getId()) {
-		case BasicEnemy:
-			MoveBehaviour moveBehaviour = new MoveBehaviour();
-			moveBehaviour.register(3, 3, object);
-			
-//			MoveTrailBehaviour moveTrailBehaviour = new MoveTrailBehaviour();
-//			moveTrailBehaviour.register(3, 3, object, null);
-			return moveBehaviour;
-		default:
-			return null;
+			case BasicEnemy:
+				moveBehaviour = new MoveBehaviour();
+				moveBehaviour.register(3, 3, object);
+				
+	//			MoveTrailBehaviour moveTrailBehaviour = new MoveTrailBehaviour();
+	//			moveTrailBehaviour.register(3, 3, object, null);
+				break;
+			case ShipEnemy:
+				moveBehaviour = new MoveImageBehaviour();
+				moveBehaviour.register(5, 3, object); //I hope this works TODO
+			default:
+				break;
 		}
+		return moveBehaviour;
 	}
 	public CollidableBehaviour createCollidableBehaviour(GameObject object) {
+		CollidableBehaviour collidableBehaviour = null;
 		switch (object.getId()) {
-		case BasicEnemy:
-			CollidableBehaviour collidableBehaviour = new CollidableBehaviour();
-			collidableBehaviour.registerBehaviour(object);
-			return collidableBehaviour;
-		default:
-			return null;		
+			case BasicEnemy:
+				collidableBehaviour = new CollidableBehaviour();
+				collidableBehaviour.registerBehaviour(object);
+				break;
+			case ShipEnemy:
+				collidableBehaviour = new CollidableBehaviour();
+				collidableBehaviour.registerBehaviour(object);
+				break;
+			default:
+				break;
 		}
+		return collidableBehaviour;
 	}
 }

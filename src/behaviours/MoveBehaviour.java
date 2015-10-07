@@ -4,7 +4,7 @@ import controller.Game;
 import model.GameObject;
 
 public class MoveBehaviour extends Behaviour {
-	protected int velX, velY;
+	protected int velX, velY; //TODO -> BasicEnemy class
 	protected GameObject object;
 	
 	public void setVelX(int velX){
