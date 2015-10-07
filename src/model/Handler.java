@@ -26,6 +26,7 @@ public class Handler {
 	}
 	
 	public void render(Graphics2D g2d){
+//		drawContainer.update(g2d);
 		
 		for(int i = 0; i < objects.size(); i++){
 			GameObject tempObject = objects.get(i);

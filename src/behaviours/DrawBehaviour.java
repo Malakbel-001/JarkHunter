@@ -6,7 +6,7 @@ import model.GameObject;
 
 public class DrawBehaviour extends Behaviour {
 	
-	public void update(double delta, Graphics2D g2d) {
+	public void update(Graphics2D g2d) {
 		
 	}
 

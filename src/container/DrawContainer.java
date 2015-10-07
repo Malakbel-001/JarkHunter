@@ -20,15 +20,9 @@ public class DrawContainer extends Container {
 		drawBehaviours.remove(drawBehaviour);
 	}
 
-	protected void update(double delta, Graphics2D g2d) {
+	public void update(Graphics2D g2d) {
 		for(DrawBehaviour drawBehaviour : drawBehaviours) {
-			drawBehaviour.update(delta, g2d);
+			drawBehaviour.update(g2d);
 		}
-	}
-
-	@Override
-	protected void update(double delta) {
-		// TODO Auto-generated method stub
-		
 	}
 }

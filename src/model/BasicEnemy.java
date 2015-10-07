@@ -30,13 +30,13 @@ public class BasicEnemy extends GameObject {
 	public BasicEnemy(Random random, ID id, BehaviourFactory behaviourFactory, MoveContainer moveContainer, DrawContainer drawContainer, CollidableContainer collidableContainer) {
 		super(0, 0, id);
 		
-		x = random.nextInt(Game.WIDTH - width);
-		y = random.nextInt((int) (Game.HEIGHT - (height*1.5)));
-		
 		this.img = new ImageIcon(this.getClass().getResource("../images/chaser.png")).getImage();
 		
 		width = img.getWidth(null);
 		height = img.getHeight(null);
+		
+		x = random.nextInt(Game.WIDTH - width);
+		y = random.nextInt((int) (Game.HEIGHT - (height*1.5)));
 		
 		this.moveContainer = moveContainer;
 		this.moveBehaviour = behaviourFactory.createMoveBehaviour(this);
