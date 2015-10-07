@@ -1,41 +1,31 @@
 package behaviours;
 
 import controller.Game;
-import model.GameObject;
+import model.BasicEnemy;
 
 public class MoveBehaviour extends Behaviour {
-	protected int velX, velY;
-	protected GameObject object;
+	protected BasicEnemy basicEnemy;
 	
-	public void setVelX(int velX){
-		this.velX = velX;
-	}
-	public void setVelY(int velY){
-		this.velY = velY;
-	}
-	public int getVelX(){
-		return velX;
-	}
-	public int getVelY(){
-		return velY;
-	}
-	
-	public void register(final int velX, final int velY, GameObject object) {
-		this.velX = velX;
-		this.velY = velY;
-		this.object = object;
+	public void register(final int velX, final int velY, BasicEnemy basicEnemy) {
+		this.basicEnemy = basicEnemy;
+		basicEnemy.setVelX(velX);
+		basicEnemy.setVelY(velY);
 	}
 	
 	public void update(double delta) {
-		object.setX((int) (object.getX() + velX * delta));
-		object.setY((int) (object.getY() + velY * delta));
+		this.superUpdate(delta);
+	}
+	
+	protected void superUpdate(double delta) {
+		basicEnemy.setX((int) (basicEnemy.getX() + basicEnemy.getVelX() * delta));
+		basicEnemy.setY((int) (basicEnemy.getY() + basicEnemy.getVelY() * delta));
 		
-		if(object.getY() <= 0 || object.getY() >= Game.HEIGHT - object.getHeight()*1.5) {
-			velY *= -1;
+		if(basicEnemy.getY() <= 0 || basicEnemy.getY() >= Game.HEIGHT - basicEnemy.getHeight()*1.5) {
+			basicEnemy.setVelY(basicEnemy.getVelY()*-1);
 		}
 		
-		if(object.getX() <= 0 || object.getX() >= Game.WIDTH - object.getWidth()) {
-			velX *= -1;
+		if(basicEnemy.getX() <= 0 || basicEnemy.getX() >= Game.WIDTH - basicEnemy.getWidth()) {
+			basicEnemy.setVelX(basicEnemy.getVelX()*-1);
 		}
 	}
 }

@@ -1,15 +1,15 @@
 package container;
 
 import java.awt.Graphics2D;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import behaviours.DrawBehaviour;
 
-public class DrawContainer extends Container {
-	public LinkedList<DrawBehaviour> drawBehaviours;
+public class DrawContainer {
+	public ArrayList<DrawBehaviour> drawBehaviours;
 	
 	public DrawContainer(){
-		drawBehaviours = new LinkedList<DrawBehaviour>();
+		drawBehaviours = new ArrayList<DrawBehaviour>();
 	}
 	
 	public void add(DrawBehaviour drawBehaviour) {
@@ -21,6 +21,7 @@ public class DrawContainer extends Container {
 	}
 
 	public void update(Graphics2D g2d) {
+//		System.out.println(drawBehaviours.size());
 		for(DrawBehaviour drawBehaviour : drawBehaviours) {
 			drawBehaviour.update(g2d);
 		}

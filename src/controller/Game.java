@@ -9,7 +9,7 @@ import java.awt.image.BufferStrategy;
 import java.util.Random;
 
 import behaviours.BehaviourFactory;
-import behaviours.MoveTrailBehaviour;
+import behaviours.TrailBehaviour;
 import model.BasicEnemy;
 import model.Handler;
 import model.ID;
@@ -89,7 +89,6 @@ public class Game extends Canvas implements Runnable {
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 				window.UPSCounter.setText("UPS: "+frames);
-				// System.out.println("FPS: " + frames);
 				frames = 0;
 			}
 		}

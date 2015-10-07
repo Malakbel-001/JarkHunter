@@ -10,44 +10,25 @@ import model.Handler;
 import model.ID;
 import model.Trail;
 
-public class MoveTrailBehaviour extends MoveBehaviour {
+public class TrailBehaviour extends Behaviour{
 	protected MoveContainer moveContainer;
 	protected DrawContainer drawContainer;
 	protected BehaviourFactory behaviourFactory;
 	
 	private int angle = 0;
-//	private int angle2 = 0;
 	private int angleVel = 5;
 	
-	public void register(final int velX, final int velY, GameObject object, MoveContainer moveContainer, DrawContainer drawContainer, BehaviourFactory behaviourFactory) {
-		this.velX = velX;
-		this.velY = velY;
+	public void register(GameObject object, DrawContainer drawContainer, BehaviourFactory behaviourFactory) {
 		this.object = object;
-		this.moveContainer = moveContainer;
 		this.drawContainer = drawContainer;
 		this.behaviourFactory = behaviourFactory;
 	}
 	
 	public void update(double delta) {
-		object.setX((int) (object.getX() + velX * delta));
-		object.setY((int) (object.getY() + velY * delta));
-		
 		angle += angleVel;
-//		angle2 += angleVel;
 		
 		if(angle >= 360) {
 			angle = 0;
-		}
-//		if(angle2 >= 360) {
-//			angle2 = 0;
-//		}
-		
-		if(object.getY() <= 0 || object.getY() >= Game.HEIGHT - object.getHeight()*1.5) {
-			velY *= -1;
-		}
-		
-		if(object.getX() <= 0 || object.getX() >= Game.WIDTH - object.getWidth()) {
-			velX *= -1;
 		}
 		
 //		handler.addObject(new Trail(x, y, ID.Trail, Color.red, width, height, 0.03f, handler));
@@ -72,17 +53,17 @@ public class MoveTrailBehaviour extends MoveBehaviour {
 		float x = r*cos(t) + h;
 		float y = r*sin(t) + k;
 	 */
-	protected double calculatePlacementTrailX(){
-		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
+//	protected double calculatePlacementTrailX(){
+//		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
 //		double radians = Math.atan2(velY, velX); //rotation depending on graphics formula
-		return ((object.getWidth()*0.5)-20)*Math.cos(radians) + object.getCenterObjectX((int) object.getX()); //still no correct positioning but close enough
-	}
+//		return ((object.getWidth()*0.5)-20)*Math.cos(radians) + object.getCenterObjectX((int) object.getX()); //still no correct positioning but close enough
+//	}
 	
-	protected double calculatePlacementTrailY(){
-		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
+//	protected double calculatePlacementTrailY(){
+//		double radians = Math.atan2(velY, velX) + Math.toRadians(180); //rotation depending on graphics formula
 //		double radians = Math.atan2(velY, velX); //rotation depending on graphics formula
-		return ((object.getHeight()*0.5)-20)*Math.sin(radians) + object.getCenterObjectY((int) object.getY()); //still no correct positioning but close enough
-	}
+//		return ((object.getHeight()*0.5)-20)*Math.sin(radians) + object.getCenterObjectY((int) object.getY()); //still no correct positioning but close enough
+//	}
 	
 	protected double calculateWavePattern1X(){
 		return ((object.getWidth()*0.5))*Math.cos(Math.toRadians(angle)) + object.getCenterObjectX((int) object.getX());

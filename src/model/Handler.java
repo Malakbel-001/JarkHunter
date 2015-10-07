@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import container.CollidableContainer;
@@ -11,21 +12,20 @@ import container.MoveContainer;
 public class Handler {
 	
 
-	private LinkedList<GameObject> objects;
+	private ArrayList<GameObject> objects;
 	private LinkedList<MouseEvent> input;
 
 	private DrawContainer drawContainer;
 	private MoveContainer moveContainer;
 	private CollidableContainer collidableContainer;
-	private int score = 0;
 
 	
 	public Handler(){
-		objects = new LinkedList<GameObject>();
+		objects = new ArrayList<GameObject>();
 		input = new LinkedList<MouseEvent>();
 		drawContainer = new DrawContainer();
 		moveContainer = new MoveContainer();
-		collidableContainer = new CollidableContainer();
+		collidableContainer = new CollidableContainer(this);
 	}
 	
 	public void tick(double delta){
@@ -33,34 +33,12 @@ public class Handler {
 	}
 	
 	public void render(Graphics2D g2d){
-//		drawContainer.update(g2d);
-		
-		for(int i = 0; i < objects.size(); i++){
-			GameObject tempObject = objects.get(i);
-			
-			tempObject.render(g2d);
-		}
+		drawContainer.update(g2d);
 	}
 	
 	public void handleInput(){
 		while (input.size() > 0) {
-			//input.poll();
-			
-			
-			GameObject tempObject = null;
-			for(int i = 0; i < objects.size(); i++){
-				tempObject = objects.get(i);
-				
-				if(tempObject.getId() == ID.BasicEnemy){
-					if(tempObject.getBounds().contains(input.peek().getPoint())){
-						removeObject(tempObject);
-						score++;
-					}
-				}
-				
-				//end
-				tempObject = null;
-			}
+			collidableContainer.update(input);
 			input.poll();
 		}
 	}
@@ -71,7 +49,7 @@ public class Handler {
 	public void removeObject(GameObject object){
 		this.objects.remove(object);
 	}
-	public LinkedList<GameObject> getObjectList(){
+	public ArrayList<GameObject> getObjectList(){
 		return objects;
 	}
 	public MoveContainer getMoveContainer(){
@@ -90,9 +68,5 @@ public class Handler {
 	
 	public LinkedList<MouseEvent> getInput(){
 		return input;
-	}
-	
-	public int getScore(){
-		return score;
 	}
 }

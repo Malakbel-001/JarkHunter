@@ -1,32 +1,27 @@
 package container;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import behaviours.MoveBehaviour;
 
-public class MoveContainer extends Container {
-	private LinkedList<MoveBehaviour> moveBehaviours;
-	
+public class MoveContainer {
+	private final ArrayList<MoveBehaviour> moveBehaviours;
+
 	public MoveContainer() {
-		moveBehaviours = new LinkedList<MoveBehaviour>();
+		moveBehaviours = new ArrayList<MoveBehaviour>();
 	}
-	
-	public void add(MoveBehaviour moveBehaviour) {
+
+	public void add(final MoveBehaviour moveBehaviour) {
 		moveBehaviours.add(moveBehaviour);
 	}
 
-	public void update(double delta) {
-		for(MoveBehaviour move : moveBehaviours) {
+	public void update(final double delta) {
+		for (final MoveBehaviour move : moveBehaviours) {
 			move.update(delta);
 		}
-		
-//		for(int i = 0; i < objects.size(); i++){
-//			tempObject = objects.get(i);
-//			tempObject.tick();
-//		}
 	}
-	
-	public void remove(MoveBehaviour moveBehaviour) {
+
+	public void remove(final MoveBehaviour moveBehaviour) {
 		moveBehaviours.remove(moveBehaviour);
 	}
 }
