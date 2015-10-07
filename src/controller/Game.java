@@ -3,6 +3,7 @@ package controller;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
@@ -14,14 +15,22 @@ import factory.UnitFactory;
 import model.BasicEnemy;
 import model.Handler;
 import model.ID;
-import model.State;
+
+import javax.swing.ImageIcon;
+
+import javafx.scene.image.Image;
+
 import view.Window;
 
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 688707883072222376L;
+	
+	static Toolkit tk = Toolkit.getDefaultToolkit();
+	static int xsize = (int) tk.getScreenSize().getWidth();
+	static int ysize = (int) tk.getScreenSize().getHeight();
 
-	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
+	public static int WIDTH = xsize, HEIGHT = ysize-50;
 	private Thread thread;
 	private boolean running = false;
 
@@ -31,6 +40,8 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private State state;
 	private Window window;
+	
+	private java.awt.Image img;
 
 	public Game() {
 		handler = new Handler();
@@ -39,16 +50,18 @@ public class Game extends Canvas implements Runnable {
 		behaviourFactory = new BehaviourFactory();
 		unitFactory = new UnitFactory(handler, behaviourFactory);
 		unitFactory.createLevel1(); // change position? TODO
+		
+//		img = new ImageIcon("../JarkHunter/Earth_and_Moon.jpg").getImage();
+//		img = new ImageIcon("../JarkHunter/SpaceBackground.jpg").getImage();
+		img = new ImageIcon("../JarkHunter/NyanCatBackground.jpg").getImage();
 
 		window = new Window(WIDTH, HEIGHT, "JarkHunt", this);
-
 	}
 
 	public synchronized void start() {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
-		state = state.RUNNING;
 	}
 
 	public synchronized void stop() {
@@ -109,8 +122,9 @@ public class Game extends Canvas implements Runnable {
 
 		Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
 
-		g2d.setColor(Color.black);
-		g2d.fillRect(0, 0, WIDTH, HEIGHT);
+		g2d.drawImage(img, 0, 0, null);
+//		g2d.setColor(Color.black);
+//		g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
 		handler.render(g2d);
 		window.infoLabel.setText("Score: " + handler.score);

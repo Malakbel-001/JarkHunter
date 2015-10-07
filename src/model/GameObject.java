@@ -10,6 +10,7 @@ import behaviour.MoveBehaviour;
 import container.CollidableContainer;
 import container.DrawContainer;
 import container.MoveContainer;
+import model.State;
 
 public abstract class GameObject {
 	
@@ -17,6 +18,7 @@ public abstract class GameObject {
 	protected ID id;
 	protected int width, height;
 	protected Image img;
+	protected State state;
 	
 	public GameObject(int x, int y, int width, int height, ID id){
 		this.x = x;
@@ -24,6 +26,7 @@ public abstract class GameObject {
 		this.width = width;
 		this.height = height;
 		this.id = id;
+		this.state = State.ALIVE;
 	}
 	
 	public abstract void remove();
@@ -63,5 +66,8 @@ public abstract class GameObject {
 	}
 	public void setHeight(int height){
 		this.height = height;
+	}
+	public State getState(){
+		return state;
 	}
 }

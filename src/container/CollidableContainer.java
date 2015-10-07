@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import behaviour.CollidableBehaviour;
+import model.State;
 import model.Handler;
 
 public class CollidableContainer {
 	public ArrayList<CollidableBehaviour> collidableBehaviours;
 	public Handler handler;
-	
-	public CollidableContainer(Handler handler){
+
+	public CollidableContainer(Handler handler) {
 		collidableBehaviours = new ArrayList<CollidableBehaviour>();
 		this.handler = handler;
 	}
-	
+
 	public void add(CollidableBehaviour collidableBehaviour) {
 		collidableBehaviours.add(collidableBehaviour);
 	}
@@ -23,13 +24,15 @@ public class CollidableContainer {
 	public void remove(CollidableBehaviour collidableBehaviour) {
 		collidableBehaviours.remove(collidableBehaviours);
 	}
-	
+
 	public void update(LinkedList<MouseEvent> input) {
-		for(CollidableBehaviour coll : collidableBehaviours) {
-			if(coll.getBounds().contains(input.peek().getPoint())){
-				coll.getObject().remove();
-				handler.removeObject(coll.getObject());
-				handler.score++;
+		for (CollidableBehaviour coll : collidableBehaviours) {
+			if (coll.getBounds().contains(input.peek().getPoint())) {
+				if (coll.getObject().getState() == State.ALIVE) {
+					coll.getObject().remove();
+					handler.removeObject(coll.getObject());
+					handler.score++;
+				}
 			}
 		}
 	}

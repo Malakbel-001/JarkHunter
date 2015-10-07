@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import java.awt.Toolkit;
+
 import controller.Game;
 
 public class Window extends JFrame  {
@@ -22,23 +24,27 @@ public class Window extends JFrame  {
 	public Window(int width, int height, String title, Game game1){
 		Game game = game1;
 		this.setTitle(title);
-		
-//		this.setPreferredSize(new Dimension(width, height));
-//		this.setMaximumSize(new Dimension(width, height));
-//		this.setMinimumSize(new Dimension(width, height));
+
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		int xsize = (int) tk.getScreenSize().getWidth();
+		int ysize = (int) tk.getScreenSize().getHeight();
+		this.setSize(xsize, ysize);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setLayout(new BorderLayout());
+		getContentPane().setLayout(new BorderLayout());
 		
-		game.setPreferredSize(new Dimension(width, height));
-		game.setMaximumSize(new Dimension(width, height));
-		game.setMinimumSize(new Dimension(width, height));
+		game.setSize((xsize-menuBar.WIDTH), (ysize-menuBar.HEIGHT));
+
+		game.setPreferredSize(new Dimension(xsize, ysize));
+		game.setMaximumSize(new Dimension(xsize, ysize));
+		game.setMinimumSize(new Dimension(xsize, ysize));
 				
-		this.add(game, BorderLayout.CENTER);
+		getContentPane().add(game, BorderLayout.CENTER);
 		menuBar = new JPanel();
-		this.add(menuBar, BorderLayout.SOUTH);
+		menuBar.setPreferredSize(new Dimension(xsize, 50));
+		getContentPane().add(menuBar, BorderLayout.SOUTH);
 
 		infoLabel = new JLabel("Score: "+ score);
 		UPSCounter = new JLabel("UPS: 0");
