@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import behaviours.DrawBehaviour;
 
-public class DrawContainer extends Container {
+public class DrawContainer {
 	public LinkedList<DrawBehaviour> drawBehaviours;
 	
 	public DrawContainer(){

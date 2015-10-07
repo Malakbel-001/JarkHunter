@@ -26,7 +26,7 @@ public abstract class GameObject {
 		this.id = id;
 	}
 	
-	public abstract Rectangle getBounds();
+	public abstract void remove();
 	
 	public double getCenterObjectX(int x){
 		return x+width*0.5;

@@ -53,8 +53,9 @@ public class Trail extends GameObject {
 		return(AlphaComposite.getInstance(type, alpha));
 	}
 	
-	public Rectangle getBounds() {
+	@Override
+	public void remove() {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 }

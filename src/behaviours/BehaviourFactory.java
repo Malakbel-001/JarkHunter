@@ -40,16 +40,16 @@ public class BehaviourFactory {
 		}
 		return moveBehaviour;
 	}
-	public CollidableBehaviour createCollidableBehaviour(GameObject object) {
+	public CollidableBehaviour createCollidableBehaviour(BasicEnemy basicEnemy) {
 		CollidableBehaviour collidableBehaviour = null;
-		switch (object.getId()) {
+		switch (basicEnemy.getId()) {
 			case BasicEnemy:
 				collidableBehaviour = new CollidableBehaviour();
-				collidableBehaviour.registerBehaviour(object);
+				collidableBehaviour.registerBehaviour(basicEnemy);
 				break;
 			case ShipEnemy:
 				collidableBehaviour = new CollidableBehaviour();
-				collidableBehaviour.registerBehaviour(object);
+				collidableBehaviour.registerBehaviour(basicEnemy);
 				break;
 			default:
 				break;

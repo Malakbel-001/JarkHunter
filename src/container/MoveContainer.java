@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import behaviours.MoveBehaviour;
 
-public class MoveContainer extends Container {
+public class MoveContainer {
 	private LinkedList<MoveBehaviour> moveBehaviours;
 	
 	public MoveContainer() {

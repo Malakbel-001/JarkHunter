@@ -24,7 +24,7 @@ public class Handler {
 		input = new LinkedList<MouseEvent>();
 		drawContainer = new DrawContainer();
 		moveContainer = new MoveContainer();
-		collidableContainer = new CollidableContainer();
+		collidableContainer = new CollidableContainer(this);
 	}
 	
 	public void tick(double delta){
@@ -43,22 +43,24 @@ public class Handler {
 	
 	public void handleInput(){
 		while (input.size() > 0) {
-			//input.poll();
+			collidableContainer.update(input);
 			
 			
-			GameObject tempObject = null;
-			for(int i = 0; i < objects.size(); i++){
-				tempObject = objects.get(i);
-				
-				if(tempObject.getId() == ID.BasicEnemy){
-					if(tempObject.getBounds().contains(input.peek().getPoint())){
-						removeObject(tempObject);
-					}
-				}
-				
-				//end
-				tempObject = null;
-			}
+			
+			
+//			GameObject tempObject = null;
+//			for(int i = 0; i < objects.size(); i++){
+//				tempObject = objects.get(i);
+//				
+//				if(tempObject.getId() == ID.BasicEnemy){
+//					if(tempObject.getBounds().contains(input.peek().getPoint())){
+//						removeObject(tempObject);
+//					}
+//				}
+//				
+//				//end
+//				tempObject = null;
+//			}
 			input.poll();
 		}
 	}
@@ -67,6 +69,7 @@ public class Handler {
 		this.objects.add(object);
 	}
 	public void removeObject(GameObject object){
+		
 		this.objects.remove(object);
 	}
 	public LinkedList<GameObject> getObjectList(){
