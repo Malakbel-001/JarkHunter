@@ -1,18 +1,18 @@
 package container;
 
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import behaviours.CollidableBehaviour;
-import model.BasicEnemy;
 import model.Handler;
 
 public class CollidableContainer {
-	public LinkedList<CollidableBehaviour> collidableBehaviours;
+	public ArrayList<CollidableBehaviour> collidableBehaviours;
 	public Handler handler;
 	
 	public CollidableContainer(Handler handler){
-		collidableBehaviours = new LinkedList<CollidableBehaviour>();
+		collidableBehaviours = new ArrayList<CollidableBehaviour>();
 		this.handler = handler;
 	}
 	
@@ -31,20 +31,5 @@ public class CollidableContainer {
 				handler.removeObject(coll.getObject());
 			}
 		}
-		
-//		GameObject tempObject = null;
-//		for(int i = 0; i < objects.size(); i++){
-//			tempObject = objects.get(i);
-//			
-//			if(tempObject.getId() == ID.BasicEnemy){
-//				if(tempObject.getBounds().contains(input.peek().getPoint())){
-//					removeObject(tempObject);
-//				}
-//			}
-//			
-//			//end
-//			tempObject = null;
-//		}
-//		input.poll();
 	}
 }
