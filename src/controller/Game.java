@@ -4,11 +4,16 @@ import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
 import factory.BehaviourFactory;
+import factory.LevelFactory;
 import factory.UnitFactory;
+import level.BaseLevelState;
+import level.FinishedState;
+import level.GameLevel1;
 import model.Handler;
 import view.Window;
 
@@ -16,22 +21,22 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 688707883072222376L;
 
-	static Toolkit tk = Toolkit.getDefaultToolkit();
-	static int xsize = (int) tk.getScreenSize().getWidth();
-	static int ysize = (int) tk.getScreenSize().getHeight();
+	private static Toolkit tk = Toolkit.getDefaultToolkit();
+	private static int xsize = (int) tk.getScreenSize().getWidth();
+	private static int ysize = (int) tk.getScreenSize().getHeight();
 
 	public static int WIDTH = xsize, HEIGHT = ysize - 50;
-	private Thread thread;
 	private boolean running = false;
+	private Thread thread;
 
 	private final UnitFactory unitFactory;
 	private final BehaviourFactory behaviourFactory;
+	private final LevelFactory levelFactory;
 
 	private final Handler handler;
-	private State state;
 	private final Window window;
 
-	private final java.awt.Image img;
+	private BaseLevelState levelState;
 
 	public Game() {
 		handler = new Handler();
@@ -39,11 +44,10 @@ public class Game extends Canvas implements Runnable {
 
 		behaviourFactory = new BehaviourFactory();
 		unitFactory = new UnitFactory(handler, behaviourFactory);
-		unitFactory.createLevel1();// change position? TODO
-
-//		img = new ImageIcon("../JarkHunter/Earth_and_Moon.jpg").getImage();
-//		img = new ImageIcon("../JarkHunter/SpaceBackground.jpg").getImage();
-		img = new ImageIcon("../JarkHunter/NyanCatBackground.jpg").getImage();
+		
+		levelFactory = new LevelFactory();
+		levelState = levelFactory.initializeLevels(unitFactory, handler, new Random());
+		levelState.initialize();
 
 		window = new Window(WIDTH, HEIGHT, "JarkHunt", this);
 	}
@@ -87,19 +91,25 @@ public class Game extends Canvas implements Runnable {
 					handler.handleInput();
 				}
 				render();
-				//
+				
+				if(handler.getObjectList().size() == 0 && !(levelState instanceof FinishedState)){
+					levelState = levelState.changeLevel();
+					if (!(levelState instanceof FinishedState)) {
+						levelState.initialize();
+					}
+				}
 			}
 			frames++;
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				window.UPSCounter.setText("UPS: " + frames);
+				window.getUPSCounter().setText("UPS: " + frames);
 				frames = 0;
 			}
 		}
 		stop();
 	}
-
+	
 	private void tick(final double delta) {
 		handler.tick(delta);
 	}
@@ -112,26 +122,17 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		final Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
-
-		g2d.drawImage(img, 0, 0, null);
+		
+		levelState.draw(g2d);
+//		g2d.drawImage(img, 0, 0, null);
 //		g2d.setColor(Color.black);
 //		g2d.fillRect(0, 0, WIDTH, HEIGHT);
 
 		handler.render(g2d);
-		window.infoLabel.setText("Score: " + handler.score);
+		window.getInfoLabel().setText("Score: " + handler.score);
 
 		g2d.dispose();
 		bs.show();
-	}
-
-	public static int clamp(int var, final int min, final int max) {
-		if (var >= max) {
-			return var = max;
-		} else if (var <= min) {
-			return var = min;
-		} else {
-			return var;
-		}
 	}
 
 	public static void main(final String[] args) {
