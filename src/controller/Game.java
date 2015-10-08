@@ -6,14 +6,11 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-
 import factory.BehaviourFactory;
 import factory.LevelFactory;
 import factory.UnitFactory;
 import level.BaseLevelState;
 import level.FinishedState;
-import level.GameLevel1;
 import model.Handler;
 import view.Window;
 
@@ -44,7 +41,7 @@ public class Game extends Canvas implements Runnable {
 
 		behaviourFactory = new BehaviourFactory();
 		unitFactory = new UnitFactory(handler, behaviourFactory);
-		
+
 		levelFactory = new LevelFactory();
 		levelState = levelFactory.initializeLevels(unitFactory, handler, new Random());
 		levelState.initialize();
@@ -91,8 +88,8 @@ public class Game extends Canvas implements Runnable {
 					handler.handleInput();
 				}
 				render();
-				
-				if(handler.getObjectList().size() == 0 && !(levelState instanceof FinishedState)){
+
+				if (handler.getObjectList().size() == 0 && !(levelState instanceof FinishedState)) {
 					levelState = levelState.changeLevel();
 					if (!(levelState instanceof FinishedState)) {
 						levelState.initialize();
@@ -109,7 +106,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		stop();
 	}
-	
+
 	private void tick(final double delta) {
 		handler.tick(delta);
 	}
@@ -122,7 +119,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		final Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
-		
+
 		levelState.draw(g2d);
 //		g2d.drawImage(img, 0, 0, null);
 //		g2d.setColor(Color.black);

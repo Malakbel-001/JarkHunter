@@ -11,17 +11,19 @@ import model.Handler;
 
 public class FinishedState extends BaseLevelState {
 
-	public FinishedState(LevelFactory levelFactory, UnitFactory unitFactory, Handler handler, Random random) {
+	public FinishedState(final LevelFactory levelFactory, final UnitFactory unitFactory, final Handler handler,
+			final Random random) {
 		super(levelFactory, unitFactory, handler, random);
 	}
 
 	@Override
 	public void initialize() {
-		
+
 	}
-	
-	public void draw(Graphics2D g2d) {
+
+	@Override
+	public void draw(final Graphics2D g2d) {
 		g2d.setColor(Color.BLACK);
-		g2d.fillRect(0, 0, Game.WIDTH, Game.HEIGHT+50);
+		g2d.fillRect(0, 0, Game.WIDTH, Game.HEIGHT + 50);
 	}
 }

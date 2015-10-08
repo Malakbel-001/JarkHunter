@@ -15,8 +15,8 @@ public class Window extends JFrame {
 
 	private static final long serialVersionUID = -240840600533728354L;
 	private final JPanel menuBar;
-	private JLabel infoLabel;
-	private JLabel UPSCounter;
+	private final JLabel infoLabel;
+	private final JLabel UPSCounter;
 	private int score;
 
 	public Window(final int width, final int height, final String title, final Game game1) {
@@ -58,10 +58,11 @@ public class Window extends JFrame {
 	public void setScore(final int i) {
 		score = i;
 	}
-	
+
 	public JLabel getInfoLabel() {
 		return infoLabel;
 	}
+
 	public JLabel getUPSCounter() {
 		return UPSCounter;
 	}
