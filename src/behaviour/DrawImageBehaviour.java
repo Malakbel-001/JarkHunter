@@ -9,8 +9,8 @@ import model.ImageEnemy;
 public class DrawImageBehaviour extends DrawBehaviour {
 	@Override
 	public void update(final Graphics2D g2d) {
-		g2d.setColor(Color.white);
-		g2d.drawRect((int) object.getX(), (int) object.getY(), object.getWidth(), object.getHeight());
+//		g2d.setColor(Color.white);
+//		g2d.drawRect((int) object.getX(), (int) object.getY(), object.getWidth(), object.getHeight());
 		if (object instanceof ImageEnemy) {
 			//remember old transform to revert rotation on graphics
 			final AffineTransform originalTransform = g2d.getTransform();

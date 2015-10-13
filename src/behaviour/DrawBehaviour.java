@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import model.GameObject;
+import model.ImageEnemy;
 
 public class DrawBehaviour extends Behaviour {
 
